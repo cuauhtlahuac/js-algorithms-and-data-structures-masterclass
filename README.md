@@ -4,7 +4,7 @@ All files generated from the Udemy Course JS Algorithms and Data Structures.
 
 ## List of Content.
 
-1. Introduction.
+1. [Introduction.](./notes/intro.md) 
 2. Big O Notation.
 3. Analyzing Performance of Arrays and Objects
 4. Problem Solving Approach.
