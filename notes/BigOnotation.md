@@ -67,3 +67,15 @@ console.log(`Time Elapsed: ${(t2 - t1) / 1000} seconds.`)
 ```
 
 - Don't be obsessed with the time, only if the difference is significant
+
+### Counting operations
+
+Let's count the number of simple operations that the computer has to perform
+
+In a for loop we may have ...
+
+`=` = 1 assignment
+`<=` n comparison
+`i++` n additions and assignments
+
+depending of the numbers of n we can say for example 5n or 3n, depends of the number of operations
