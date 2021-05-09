@@ -2,6 +2,7 @@
 # Big O Notation
 
 [slides](https://cs.slides.com/colt_steele/big-o-notation)
+[Good Info](https://www.freecodecamp.org/news/big-o-notation-why-it-matters-and-why-it-doesnt-1674cfa8a23c/)
 
 ## Need for Big O Notation
 
@@ -10,6 +11,33 @@
   1. **Faster**?
   2. **Less memory**?
   3. More readable?
+
+### Explanation
+
+- Big O is for detect how the runtime of an algorithm grows as the inputs grow. The relationship about the input size and the time.
+
+### Notation
+
+- O(1) : Linear form, if the input grow the run time (output) won't be affected
+- O(n) : Apply to for example a for loop or two, doesn't matter if the operation is 5n (5 for loops), we going to simplify to O(n).
+- O(n^2): In case of nested loops we have `O(n)*O(n) = O(n^2)`. If your input has 3 times to execute with the nested loop will be 3^3, that is always the square of the cycles number.
+  Check the example:
+
+  ```js
+    function printAllPairs(n){
+      for (let i = 0; i < n; i++){
+        for (let j = 0; j < n; j++){
+          console.log(i, j);
+        }
+      }
+    }
+
+    printAllPairs(3) // it will print 9 pairs
+    printAllPairs(5) // it will print 25 pairs
+  ```
+
+  ![freecodecamp BigO Graphic](https://cdn-media-1.freecodecamp.org/images/1*KfZYFUT2OKfjekJlCeYvuQ.jpeg)
+
 
 #### Exercise
 
