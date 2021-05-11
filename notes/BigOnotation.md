@@ -15,10 +15,15 @@
 ### Explanation
 
 - Big O is for detect how the runtime of an algorithm grows as the inputs grow. The relationship about the input size and the time.
+- Example:
+  - f(n) linear (f(n) = n ): Means, if the input grows then the run time grows as well, is 1 to 1 proportion
+  - f(n) quadratic (f(n) = n^2): Means if the input grows the run time will grow twice.
+  - f(n) constant (f(n) = 1): If the input grows it doesn't matter, the run time will ever be the same.
+  - f(n) **Could be something entirely different!**.
 
 ### Notation
 
-- O(1) : Linear form, if the input grow the run time (output) won't be affected
+- O(1) : Linear form, if the input grow the run time (output) won't be affected. 
 - O(n) : Apply to for example a for loop or two, doesn't matter if the operation is 5n (5 for loops), we going to simplify to O(n).
 - O(n^2): In case of nested loops we have `O(n)*O(n) = O(n^2)`. If your input has 3 times to execute with the nested loop will be 3^3, that is always the square of the cycles number.
   Check the example:
@@ -107,3 +112,25 @@ In a for loop we may have ...
 `i++` n additions and assignments
 
 depending of the numbers of n we can say for example 5n or 3n, depends of the number of operations
+
+### Simplify Big O Notation
+
+It's a matter of convert for example:
+ - O(500) = O(1)
+ - 5n + 2 = O(n); O(2n) = O(n);
+ - O(13n^2) = O(n^2)
+
+#### Big O Shorthands
+
+**constants**
+  1. Arithmetic operations are **constants**: The computer doesn't matter if is 2 * 2 or a 1000000 * 2.
+  2. Variable assignment
+  3. Accessing elements in an array by index or object by key.
+  4. A limited loop only if doesn't run all the n input, for example:
+  ```js
+    function logAtMost5(n) { // It never be more than 5, it's almost a constant
+      for(let i = 1; i <= Math.min (5, n); i++){
+        console.log(i);
+      }
+    }
+  ```
