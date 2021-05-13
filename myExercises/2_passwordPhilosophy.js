@@ -42,22 +42,57 @@ Pseudocodigo
 */
 const fs = require('fs');
 
-let data = '';
+let dataFromTextFile = '';
 
-try {  
-  data = fs.readFileSync('2_puzzleInput.txt', 'utf8');
-} catch(e) {
-  console.log('Error:', e.stack);
+try {
+	dataFromTextFile = fs.readFileSync('2_puzzleInput.txt', 'utf8');
+} catch (e) {
+	console.log('Error:', e.stack);
 }
 
-// Tranformar el texto
-const passwordList = data.split('\n')
+const passwordsList = dataFromTextFile.split('\n');
 
-// Iterar el arreglo
+function splitLine(str, separator) {
+	return str.split(separator);
+}
 
-// "1-3 c" rango  guardo en variable 1   3
-//  guardar la letra
+function getRangeNumbers(str) {
+	const [ start, end ] = splitLine(str, '-');
+	return { start: Number(start), end: Number(end) };
+}
 
+function countString(str, char) {
+	const cleanStr = str.trim();
+	let dicChars = {};
 
+	for (let item of cleanStr) {
+		if (dicChars[item]) {
+			dicChars[item]++;
+		} else {
+			dicChars[item] = 1;
+		}
+	}
 
-console.log(passwordList);
+	return dicChars[char];
+}
+
+function howManyPasswordsAreValid(array) {
+	let valid = 0;
+	array.forEach(passwordWithPolicy => {
+		const [ policies, password ] = splitLine(passwordWithPolicy, ':');
+		const [ strRange, character ] = splitLine(policies, ' ');
+		const { start, end } = getRangeNumbers(strRange);
+
+		if (password && password.length >= start) {
+			const charAmount = countString(password, character);
+			if (charAmount >= start && charAmount <= end) {
+				valid++;
+			}
+		} else {
+			console.count('not valid');
+		}
+	});
+	return valid;
+}
+
+console.log(howManyPasswordsAreValid(passwordsList));
