@@ -134,3 +134,23 @@ It's a matter of convert for example:
       }
     }
   ```
+
+  ### Space complexity in JS
+
+  - Most primitives are constants space. Doesn't matter if is 1 or 100000000,l it will take the same amount of space.
+  - Strings require O(n) space.
+  - Reference types are O(n), length of array or keys for Objects
+  
+  for example:
+
+  ```js
+    let total = 0; // This is O(1), no matter the amount of the number the space is the same
+  ```
+
+  ```js
+    let newArr = []
+
+    for(let val of arr){
+      newArray.push(); // O(n) space, because if the array grows the space will grow
+    }
+  ```
