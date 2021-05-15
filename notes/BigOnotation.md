@@ -154,3 +154,29 @@ It's a matter of convert for example:
       newArray.push(); // O(n) space, because if the array grows the space will grow
     }
   ```
+
+  ### Logarithms
+
+  - log2(8) = 3  -----> 2^3 = 8
+  - log2(value)=exponent ------> 2^exp = value
+  - The logarithm of a number roughly measures the number of times you can divide a number by 2 **before you get a value that's less than or equal to one**.
+
+  example: 
+
+  ```js
+    8/2 = 4
+    4/2 = 2
+    2/2 = 1
+    1 // hit the one number
+    // log(8) = 3
+  ```
+
+  ```js
+    25/2 = 12.5
+    12.5/2 = 6.25
+    6.25/2 = 3.125
+    3.125/2 = 1.5625
+    1.5625/2 = 0.78125
+    0.78125 // Here is less than one
+    // log(25) = 4.64 proximally. with base 2 of course
+  ``` 
