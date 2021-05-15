@@ -53,6 +53,7 @@ try {
 const passwordsList = dataFromTextFile.split('\n');
 
 function splitLine(str, separator) {
+	// Agregar validacion
 	return str.split(separator);
 }
 
