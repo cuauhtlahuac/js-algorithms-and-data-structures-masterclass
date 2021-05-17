@@ -20,6 +20,20 @@
 * Object.entries - O(N): ```[[key],[value]]```
 * hasOwnProperty - O(1): return > ```true || false```
 
+## Arrays
+
+- Ordered lists
+
+* Insertion - It depends: 
+  * If is Push: O(1)
+  * If is an insertion at the start or middle of the array is O(N)
+* Removal - It depends:
+  * If Remove the last element, with pop: O(1)
+  * If Remove the first element: O(N)
+* Searching - O(N): If we search for some element, we need potentially search in every single element
+* Access - O(1): You know the index
+
+
 
 
 
