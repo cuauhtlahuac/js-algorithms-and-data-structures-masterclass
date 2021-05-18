@@ -10,51 +10,44 @@ try {
 
 const patternList = dataFromTextFile.split('\n');
 
-// encontrar límite de fila y guardarlo en const
+function calculateSlope(list, right, jump = 1) {
+	let trees = 0;
+	let currentPosition = right;
+	list.forEach((row, index) => {
+		// jump = 1   index =
 
-// crear una constante para la posición en este cas 3
+		// 0 #...#
+		// 1 #...#
+		// 2 #...# - O
+		// 3 #...#
+		// 4 #...# - O
+		// 5 #...#
 
-const position = 3;
+		// Como decirle no tomes en cuenta ...
+		if (index !== 0) {
+			// if index + jump % X (par, impar)
 
-// crear una variable para hacer seguimiento del avance de la posición
+			// if 1 + 1 % 1 === 0
+			if (index % jump === 0) {
+				const limit = row.length - 1;
 
-let currentPosition = 0;
+				trees += row[currentPosition] === '#' ? 1 : 0;
 
-// crear variable trees
+				if (currentPosition + right <= limit) {
+					currentPosition += right;
+				} else {
+					currentPosition = right - 1 + currentPosition - limit;
+				}
+			}
+		}
+	});
+	return trees;
+}
 
-let trees = 0;
-
-// recorrer la fila desde la posicición 1
-
-patternList.forEach((row, index) => {
-	const limit = row.length - 1;
-	// contar tres posiciones + 1
-
-	// recorrer la fila
-
-	// .........#....#.###.........##.
-	// ..###.#......#......#.......##.
-	// ##....#.#.......#.....#........
-
-	// checar si es arbol y guardarlo en la variable #
-	console.table({ row, currentPosition, limit, trees });
-	console.log(row[currentPosition]);
-  
-	//  guardar la posición actual si la posicion es menor al límite
-  
-	if (currentPosition + position < limit) {
-    currentPosition += position;
-		console.log({ cpppml: currentPosition, limit });
-	} else {
-    // currentPosi - limit = 2 - position = newPosition
-		currentPosition = position + currentPosition - limit;
-		console.log({ f: currentPosition });
-	}
-  trees += row[currentPosition] === '#' ? 1 : 0;
-
-	// encontrar la siguiente posición sumando la variable más 3
-});
-
-console.log(trees);
-
-// regresar el total
+let threesTogether = 1;
+threesTogether *= calculateSlope(patternList, 1)
+threesTogether *= calculateSlope(patternList, 3)
+threesTogether *= calculateSlope(patternList, 5)
+threesTogether *= calculateSlope(patternList, 7)
+threesTogether *= calculateSlope(patternList, 1, 2)
+console.log({threesTogether});
