@@ -20,12 +20,50 @@ Strategies are adapted from the book **how to solve it** by George Polya.
      5. How should I label the important pieces of data that are a part of the problem?
 
   2. Explore Concrete Examples.
+     1. Start with Simple Example.
+     2. Progress to more Complex Examples
+     3. Explore Examples with empty Inputs
+     4. Explore Examples with Invalid Inputs
 
-  3. Break it down.
 
-  4. Solve/Simplify.
+ ```js
+ // Write a function which takes in a string and returns counts of each character in the string
+ 
+// Easy examples 
+charCount("aaaaa"); // {a: 4}
+charCount("hello"); // {h: 1, e: 1, l: 2, o: 1 }
 
-  5. Look back and refactor.
+// More complex
+charCount("My phone Number is 178951"); // spaces?, Numbers? , LowerCase?, Uppercase?
+charCount(""); // Empty what should return?
+ ``` 
 
-2. Master commons problems solving patterns. 
+  1. Break it down.
+     1. Sudocode.
+        * Explicitly write out the steps you need to take
+        * Just the basic components of the solution
 
+        ```js
+        // Write a function which takes in a string and returns counts of each character in the string
+          
+          // Return an object with keys that are lowercase alphanumeric chars in the string; 
+        
+        charCount(str){
+          // make object to return at end
+
+          // loop over string, for each character...
+            // if the char is a number/letter AND is a key in object, add one to count
+            // if the char is a number/letter AND is not in object, add it to the object and set value to 1
+            // if character is something else (space, period, etc.) don't do anything
+
+          // return object at end
+        }
+        ```
+
+  2. Solve/Simplify.
+
+  3. Look back and refactor.
+
+1. Master commons problems solving patterns. 
+
+ 
