@@ -39,7 +39,7 @@ charCount(""); // Empty what should return?
  ``` 
 
   1. Break it down.
-     1. Sudocode.
+     1. Pseudocode.
         * Explicitly write out the steps you need to take
         * Just the basic components of the solution
 
@@ -61,9 +61,56 @@ charCount(""); // Empty what should return?
         ```
 
   2. Solve/Simplify.
+     1. Find the core difficulty in what you're trying to do.
+     2. Temporarily ignore that difficult
+     3. Write a simple solution
+     4. Then incorporate that difficulty back in.
 
-  3. Look back and refactor.
+  Maybe you can start with the first character with a hard code text or you can loop the text and print each char.
+  Just Start with the main logic. If you stock with some method you can google latter.
 
-1. Master commons problems solving patterns. 
+  3. Look back and refactor. ( Most important if you want to improve as developer )
+     1. Can you check the result?
+     2. Can you derive the result differently?
+     3. Can you understand it at a glance (take a brief or hurried look)?: Can Some one else understand you solution?
+     4. Can you use the result or method for some other problem?
+     5. Can you improve the performance of your solution?
+     6. Can you think of other ways to refactor?
+     7. How have other people solved this problem?
+
+#### Final Solution to CharCount.
+
+```js
+function charCount(str) {
+  const obj = {};
+  for(let char of str){
+    // if(/[a-z0-9]/.test(char)) { slowest version
+    if(isAlphanumeric(char)) {
+      char = char.toLowerCase(); // transform after check if is valid
+      obj[char] = ++obj[char] || 1;
+    }
+  }
+  return obj;
+}
+
+// check alphanumeric with charAtCode is a fastest way than regex
+function isAlphanumeric(char) {
+  const code = char.charCodeAt(0);
+  if(
+    !(code > 47 && code < 58) && // numeric (0-9)
+    !(code > 64 && code < 91) && // upper alpha (0-9)
+    !(code > 96 && code < 123) // lower alpha (a-z)
+    )
+    {
+      return false
+    }
+
+  return true;
+}
+```
+
+**hint**: take a look at [charAtCode](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/charCodeAt) method.
+
+Master commons problems solving patterns.
 
  
