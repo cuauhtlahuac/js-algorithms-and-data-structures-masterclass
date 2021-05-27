@@ -58,43 +58,45 @@ let highest = 0;
 
 let idsList = []
 
-for (let row of rows) {
-	const binaryListFB = transformToBinarySearchInput(row, 'F', 'B');
-	const binaryListLR = transformToBinarySearchInput(row, 'L', 'R');
-
-	let seatRow = binarySearch(binaryListFB, rowRange);
-	let columnRow = binarySearch(binaryListLR, columnRange);
-
-	// What is the highest seat ID on a boarding pass?
-	highest = Math.max(highest, seatRow * 8 + columnRow);
-
-	const id = seatRow * 8 + columnRow
-	idsList.push(id)
-
-	// B range 64 - 127 - 32
-	// B o F es colocado, si es F entonces se parte de adelante para atras y si es B se parte de atras para adelante
+function findHighestSeatId(rows) {
+	for (let row of rows) {
+		const binaryListFB = transformToBinarySearchInput(row, 'F', 'B');
+		const binaryListLR = transformToBinarySearchInput(row, 'L', 'R');
+	
+		let seatRow = binarySearch(binaryListFB, rowRange);
+		let columnRow = binarySearch(binaryListLR, columnRange);
+	
+		// What is the highest seat ID on a boarding pass?
+		highest = Math.max(highest, seatRow * 8 + columnRow);
+	
+		const id = seatRow * 8 + columnRow
+		idsList.push(id)
+	
+		// B range 64 - 127 - 32
+		// B o F es colocado, si es F entonces se parte de adelante para atras y si es B se parte de atras para adelante
+	}
+	
+	// start 68
+	// end 970
+	return highest
 }
 
-// start 68
-// end 970
-
-function compare( a, b ) {
-	if ( a > b ) return 1;
-	if ( b > a ) return -1;
-	return 0;
-}
-
-idsList.sort(compare)
-
-for (let index = 0; index < idsList.length; index++) {
-	const element = idsList[index];
-	if(index + 68 - element < 0){
-		console.log({element});
-		return element
+function findMySeat(idsList){
+	function compare( a, b ) {
+		if ( a > b ) return 1;
+		if ( b > a ) return -1;
+		return 0;
+	}
+	
+	idsList.sort(compare)
+	
+	for (let index = 0; index < idsList.length; index++) {
+		const element = idsList[index];
+		if(index + 68 - element < 0){
+			return element - 1
+		}
 	}
 }
-
-console.log({highest});
 
 function binarySearch(row, range) {
 	const newRange = { ...range };
@@ -124,3 +126,8 @@ function transformToBinarySearchInput(input, upper, lower) {
 	}
 	return arr;
 }
+
+
+console.log(findHighestSeatId(rows));
+
+console.log(findMySeat(idsList));
