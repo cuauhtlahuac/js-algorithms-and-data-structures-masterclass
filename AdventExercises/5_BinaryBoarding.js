@@ -56,6 +56,8 @@ let highest = 0;
 // Necesito encontrar el asiento basandome en los primeros 7 caracteres,
 // F significa que comienza de 0 a 63 (63 filas) y el B de 64 al 127 (63).
 
+let idsList = []
+
 for (let row of rows) {
 	const binaryListFB = transformToBinarySearchInput(row, 'F', 'B');
 	const binaryListLR = transformToBinarySearchInput(row, 'L', 'R');
@@ -66,10 +68,19 @@ for (let row of rows) {
 	// What is the highest seat ID on a boarding pass?
 	highest = Math.max(highest, seatRow * 8 + columnRow);
 
+	const id = seatRow * 8 + columnRow
+	idsList.push(id)
+	//console.log({id: seatRow * 8 + columnRow});
+
+
 	// B range 64 - 127 - 32
 	// B o F es colocado, si es F entonces se parte de adelante para atras y si es B se parte de atras para adelante
 }
 
+// start 68
+// end 970
+idsList.sort()
+console.log(idsList.filter((id, ind, array) => { console.log({id, ind}); return ((id < 971 && id > 67) && (id - 1 !== array[ind]))}));
 console.log(highest);
 
 function binarySearch(row, range) {
