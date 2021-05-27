@@ -70,8 +70,6 @@ for (let row of rows) {
 
 	const id = seatRow * 8 + columnRow
 	idsList.push(id)
-	//console.log({id: seatRow * 8 + columnRow});
-
 
 	// B range 64 - 127 - 32
 	// B o F es colocado, si es F entonces se parte de adelante para atras y si es B se parte de atras para adelante
@@ -79,9 +77,24 @@ for (let row of rows) {
 
 // start 68
 // end 970
-idsList.sort()
-console.log(idsList.filter((id, ind, array) => { console.log({id, ind}); return ((id < 971 && id > 67) && (id - 1 !== array[ind]))}));
-console.log(highest);
+
+function compare( a, b ) {
+	if ( a > b ) return 1;
+	if ( b > a ) return -1;
+	return 0;
+}
+
+idsList.sort(compare)
+
+for (let index = 0; index < idsList.length; index++) {
+	const element = idsList[index];
+	if(index + 68 - element < 0){
+		console.log({element});
+		return element
+	}
+}
+
+console.log({highest});
 
 function binarySearch(row, range) {
 	const newRange = { ...range };
@@ -111,28 +124,3 @@ function transformToBinarySearchInput(input, upper, lower) {
 	}
 	return arr;
 }
-
-/*
-
-OLD WAY
-
-function defineRow(row, range) {
-	let rowNumber = 0;
-	for(let i = 0; i < row.length - 3; i++){
-		let reachEnd = Boolean((i === row.length - 4))
-		const charCode = row.charCodeAt(i);
-		if (charCode === 70) {
-			// F
-			if(reachEnd) rowNumber = range.start;
-			range.end = Math.ceil((range.start + range.end) / 2);
-		} else if (charCode === 66) {
-			// B
-			if(reachEnd) rowNumber = range.end;
-			range.start = Math.ceil((range.start + range.end) / 2);
-		}	
-		console.log({reachEnd, rowNumber, l: row.length, range, charCode});
-	}
-	return rowNumber;
-}
-
-*/
