@@ -10,41 +10,62 @@ const getDocument = docRoute => {
 	}
 };
 
-const rows = getDocument('6_input.txt').split(/\n\n/g);
+const rows = getDocument('6_test.txt').split(/\n\n/g);
 
-function sumOfYesCounts(rows){
+console.log({ rows });
+
+function sumOfYesCounts(rows) {
 	let total = 0;
-	rows.forEach((line)=> {
-		const obj = {}
+	rows.forEach(line => {
+		console.log("****************",{ line, len: line.length });
+		const obj = {};
+		let subtotal = 0;
+		let comesAfterBL = false;
+		
 		for (let index = 0; index < line.length; index++) {
 			const element = line[index];
-
-			if(isAlphanumeric(element)){
-				if(!obj[element]) total++
-				obj[element] = 1;
+//			console.log('-----', { element, index }, ')');
+			if(element === '\n'){
+				comesAfterBL = true;
+			} else {
+				if(!comesAfterBL){
+					obj[element] = 1;
+					subtotal++;
+				}else{
+					if(!obj[element]){
+						subtotal -= subtotal === 0 ? 0 : 1;
+					}else{
+						obj[element] += 1;
+						subtotal++;
+					}
+				}
 			}
+			console.log({obj, subtotal, comesAfterBL, element, total});
 		}
-	})
+		total += subtotal
+	});
 	return total;
 }
+// HOW MANY PERSONS ARE IN THE GROUP
+// EACH ROW REPRESENT ONE PERSON SEPARATED FOR BREAK LINE
+// ONLY COUNTS 1 IF THE GROUP VOTE FOR THE SAME RESPONSE. For example if in the group are 2 persons and both voted for a) then it should count only a
 
 console.log(sumOfYesCounts(rows));
 
 function isAlphanumeric(char) {
-  const code = char.charCodeAt(0);
-  if(
-    !(code > 47 && code < 58) && // numeric (0-9)
-    !(code > 64 && code < 91) && // upper alpha (0-9)
-    !(code > 96 && code < 123) // lower alpha (a-z)
-    )
-    {
-      return false
-    }
+	const code = char.charCodeAt(0);
+	if (
+		!(code > 47 && code < 58) && // numeric (0-9)
+		!(code > 64 && code < 91) && // upper alpha (0-9)
+		!(code > 96 && code < 123) // lower alpha (a-z)
+	) {
+		return false;
+	}
 
-  return true;
+	return true;
 }
 
-// you only Wrote down yes answers 
+// you only Wrote down yes answers
 
 // In this group, there are 6 questions to which anyone answered "yes": a, b, c, x, y, and z.
 // (Duplicate answers to the same question don't count extra; each question counts at most once.)
