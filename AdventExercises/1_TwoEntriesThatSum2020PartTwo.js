@@ -3,7 +3,7 @@ const fs = require('fs');
 let data = '';
 
 try {
-	data = fs.readFileSync('TwoEnriesPartTwo.txt', 'utf8');
+	data = fs.readFileSync('1_inputTwoEnriesPartTwo.txt', 'utf8');
 } catch (e) {
 	console.log('Error:', e.stack);
 }
