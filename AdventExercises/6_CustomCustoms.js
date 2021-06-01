@@ -10,94 +10,49 @@ const getDocument = docRoute => {
 	}
 };
 
-const rows = getDocument('6_test.txt').split(/\n\n/g);
-
-console.log({ rows });
+const rows = getDocument('6_input.txt').split(/\n\n/g);
 
 function sumOfYesCounts(rows) {
 	let total = 0;
-	rows.forEach(line => {
-		console.log("****************",{ line, len: line.length });
-		const obj = {};
-		let subtotal = 0;
-		let comesAfterBL = false;
-		
-		for (let index = 0; index < line.length; index++) {
-			const element = line[index];
-//			console.log('-----', { element, index }, ')');
-			if(element === '\n'){
-				comesAfterBL = true;
+
+	// Identificar al grupo
+	rows.forEach(group => {
+		let dictionaryA = {};
+		let dictionaryB = {};
+		let comesAfterFirstBL = false;
+
+		for (let index = 0; index < group.length; index++) {
+			const answer = group[index];
+
+			// Verificamos si hay una persona extra
+			const extraPerson = Boolean(answer === '\n');
+			
+			if (extraPerson) {
+				comesAfterFirstBL = true;
+				// * Limpiamos los valores del objeto A
+				dictionaryA = { ...dictionaryB };
+				dictionaryB = {};
+			}
+
+			// ? si es un solo pasajero solo llenamos el objeto b
+			if (group.indexOf('\n') < 0) {
+				dictionaryB[answer] = 1;
+				// * Si es más de uno entonces...
 			} else {
-				if(!comesAfterBL){
-					obj[element] = 1;
-					subtotal++;
-				}else{
-					if(!obj[element]){
-						subtotal -= subtotal === 0 ? 0 : 1;
-					}else{
-						obj[element] += 1;
-						subtotal++;
-					}
+				// * Si viene antes del primer break line...
+				if (!comesAfterFirstBL) {
+					// * ...crea el objeto B
+					dictionaryB[answer] = 1;
+				} else {
+					// * Si viene después del primer Break line, verifica si el reciente objeto A creado a partir del objeto B tiene la respuesta 'yes' del valor de la variable answer y agregalo al objeto b
+					if (dictionaryA[answer]) dictionaryB[answer] = 1;
 				}
 			}
-			console.log({obj, subtotal, comesAfterBL, element, total});
 		}
-		total += subtotal
+		// * Cuando termina el loop del grupo asignamos por último los valores acumulados en B a el Total usando el length.
+		total += Object.keys(dictionaryB).length;
 	});
 	return total;
 }
-// HOW MANY PERSONS ARE IN THE GROUP
-// EACH ROW REPRESENT ONE PERSON SEPARATED FOR BREAK LINE
-// ONLY COUNTS 1 IF THE GROUP VOTE FOR THE SAME RESPONSE. For example if in the group are 2 persons and both voted for a) then it should count only a
 
 console.log(sumOfYesCounts(rows));
-
-function isAlphanumeric(char) {
-	const code = char.charCodeAt(0);
-	if (
-		!(code > 47 && code < 58) && // numeric (0-9)
-		!(code > 64 && code < 91) && // upper alpha (0-9)
-		!(code > 96 && code < 123) // lower alpha (a-z)
-	) {
-		return false;
-	}
-
-	return true;
-}
-
-// you only Wrote down yes answers
-
-// In this group, there are 6 questions to which anyone answered "yes": a, b, c, x, y, and z.
-// (Duplicate answers to the same question don't count extra; each question counts at most once.)
-
-/*
-input
----------
-abc
-
-a
-b
-c
-
-ab
-ac
-
-a
-a
-a
-a
-
-b
----------
-
-This list represents answers from five groups:
-
-The first group contains one person who answered "yes" to 3 questions: a, b, and c.
-The second group contains three people; combined, they answered "yes" to 3 questions: a, b, and c.
-The third group contains two people; combined, they answered "yes" to 3 questions: a, b, and c.
-The fourth group contains four people; combined, they answered "yes" to only 1 question, a.
-The last group contains one person who answered "yes" to only 1 question, b.
-In this example, the sum of these counts is 3 + 3 + 3 + 1 + 1 = 11.
-
-For each group, count the number of questions to which anyone answered "yes". What is the sum of those counts?
-*/
