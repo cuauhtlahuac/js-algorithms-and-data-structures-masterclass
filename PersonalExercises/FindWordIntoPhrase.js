@@ -1,4 +1,4 @@
-function findWord(phrase, word){
+function findTheWord(phrase, word){
   for (let index = 0; index < phrase.length; index++) {
     let wordFound = false;
     const element = phrase[index];
@@ -20,4 +20,4 @@ function findWord(phrase, word){
 
 const phrase = "Bacon ipsum dolor amet corned beef tri-tip fatback tongue capicola salami cow picanha. Kielbasa filet mignon pancetta sausage corned beef. Capicola corned beef tail chicken."
 const word = "fatback"
-console.log(findWord(phrase, word));
+console.log(findTheWord(phrase, word));
