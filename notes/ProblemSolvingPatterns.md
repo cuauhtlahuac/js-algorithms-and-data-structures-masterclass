@@ -2,14 +2,13 @@
 
 [slides](https://cs.slides.com/colt_steele/problem-solving-patterns)
 
-- [Frequency Counter](#Frequency-Counter)
-- Multiple Pointers
-- Sliding Window
-- Divide and Conquer
-- Dynamic Programming
-- Greedy Algorithms
-- Backtracking
-- Many more!
+- [Problem Solving Patterns](#problem-solving-patterns)
+  - [Frequency Counter](#frequency-counter)
+    - [Example](#example)
+    - [Naive Solution. N^2](#naive-solution-n2)
+    - [Refactored](#refactored)
+  - [Multiple Pointers](#multiple-pointers)
+    - [Example](#example-1)
 
 ## Frequency Counter
 
@@ -17,7 +16,7 @@ This pattern uses objects or sets to collect values/frequencies of values. Compa
 
 This can often avoid the need for nested loops or **O(N^2)** operations with arrays / strings
 
-**Example**
+### Example
 
 Write a function called same, which accepts two arrays.
 The function should return true if every value in the array has it's corresponding value squared in the second array.
@@ -86,3 +85,14 @@ function same(arr1, arr2){
 ```
 
 It could be 3(n), but we simplify to O(n)
+
+## Multiple Pointers
+
+It is well to creating pointers or values that correspond to an index or position and move towards the beginning, end or middle based on a certain condition
+
+### Example
+
+Write a function called sumZero which accepts a sorted array of integers. The function should find the first pair where the sum is 0. Return an array that includes both values that sum to zero or undefined if a pair does not exist.
+
+[my code solution](../PersonalExercises/SumZero.js)
+
