@@ -7,9 +7,6 @@ sumZero([1,2,3]) // undefined
 sortedArrayOfNumbers = [ -3, -2, -1, 0, 1, 2, 3 ];
 
 function sumZero(sortedArrayOfNumbers) {
-  // create two temporary variables
-  let numOne;
-  let numTwo;
   const len = sortedArrayOfNumbers.length;
   let finalElement;
 

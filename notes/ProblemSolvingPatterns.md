@@ -9,6 +9,8 @@
     - [Refactored](#refactored)
   - [Multiple Pointers](#multiple-pointers)
     - [Example](#example-1)
+    - [NAIVE SOLUTION](#naive-solution)
+    - [REFACTOR](#refactor)
 
 ## Frequency Counter
 
@@ -96,3 +98,52 @@ Write a function called sumZero which accepts a sorted array of integers. The fu
 
 [my code solution](../PersonalExercises/SumZero.js)
 
+### NAIVE SOLUTION
+
+Here we run over each number until the other side, to check the condition.
+
+*Time Complexity - O(N^2)*
+
+*Space Complexity - O(1)*
+
+```js
+function sumZero(arr){
+    for(let i = 0; i < arr.length; i++){
+        for(let j = i+1; j < arr.length; j++){
+            if(arr[i] + arr[j] === 0){
+                return [arr[i], arr[j]];
+            }
+        }
+    }
+}
+```
+
+### REFACTOR
+
+*Time Complexity - O(N)*
+
+*Space Complexity - O(1)*
+
+```js
+function sumZero(arr){
+    // Define a first pointer at the start of the array
+    let left = 0;
+    // Define a second pointer at the end
+    let right = arr.length - 1;
+    // While Left is less than right...
+    while(left < right){ 
+        // get the sum of both
+        let sum = arr[left] + arr[right];
+        // the sum is equal to zero? ... BINGO!
+        if(sum === 0){
+            return [arr[left], arr[right]];
+        // sum less tha zero? ... move the right pointer one left position
+        } else if(sum > 0){
+          right--;
+          // sum is more than zero? ... move the left pointer one right position
+        } else {
+            left++;
+        }
+    }
+}
+```
