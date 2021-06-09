@@ -11,6 +11,7 @@
     - [Example](#example-1)
     - [NAIVE SOLUTION](#naive-solution)
     - [REFACTOR](#refactor)
+    - [countUniqueValues](#countuniquevalues)
 
 ## Frequency Counter
 
@@ -147,3 +148,10 @@ function sumZero(arr){
     }
 }
 ```
+
+### countUniqueValues
+
+Implement a function called countUniqueValues, which accepts a sorted array, and counts the unique values in the array. There can be negative numbers in the array, but it will always be sorted.
+
+[My Solution](../PersonalExercises/UniqueValues.js);
+
