@@ -8,17 +8,16 @@ There can be negative numbers in the array, but it will always be sorted.
 
 function countUniqueValues(array) {
   let j = 0;
-  const total = [array[j]];
   const length = array.length;
   
   for (let i = 1; i < length; i++) {
     if( array[j] !== array[i] ){
-      total.push(array[i])
-      j = i;
-    }  
+      j++;
+      array[j] = array[i];
+    }
   }
-  console.log(total.length);
-  return total.length;
+  console.log(j + 1);
+  return j;
 }
 
 
