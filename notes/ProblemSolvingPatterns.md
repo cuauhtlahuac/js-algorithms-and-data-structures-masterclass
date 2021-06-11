@@ -12,6 +12,8 @@
     - [NAIVE SOLUTION](#naive-solution)
     - [REFACTOR](#refactor)
     - [countUniqueValues](#countuniquevalues)
+    - [SLIDING WINDOW](#sliding-window)
+      - [An Example](#an-example)
 
 ## Frequency Counter
 
@@ -97,7 +99,7 @@ It is well to creating pointers or values that correspond to an index or positio
 
 Write a function called sumZero which accepts a sorted array of integers. The function should find the first pair where the sum is 0. Return an array that includes both values that sum to zero or undefined if a pair does not exist.
 
-[my code solution](../PersonalExercises/SumZero.js)
+[my code solution](../CourseExercises/MultiplePointers/SumZero.js)
 
 ### NAIVE SOLUTION
 
@@ -153,5 +155,14 @@ function sumZero(arr){
 
 Implement a function called countUniqueValues, which accepts a sorted array, and counts the unique values in the array. There can be negative numbers in the array, but it will always be sorted.
 
-[My Solution](../PersonalExercises/UniqueValues.js);
+[My Solution](./../CourseExercises/MultiplePointers/UniqueValues.js)(Same as the teacher 😊)
 
+### SLIDING WINDOW
+
+This pattern involves creating a window which can either be an array or number from one position to another. 
+Depending on a certain condition, the window either increases or closes (and a new window is created).
+Very useful for keeping track of a subset of data in an array/string etc.
+
+#### An Example
+
+Write a function called maxSubarraySum which accepts an array of integers and a number called n. The function should calculate the maximum sum of n consecutive elements in the array.
