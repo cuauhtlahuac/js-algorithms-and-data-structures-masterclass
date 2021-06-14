@@ -12,8 +12,8 @@
     - [NAIVE SOLUTION](#naive-solution)
     - [REFACTOR](#refactor)
     - [countUniqueValues](#countuniquevalues)
-    - [SLIDING WINDOW](#sliding-window)
-      - [An Example](#an-example)
+  - [SLIDING WINDOW](#sliding-window)
+    - [Example](#example-2)
 
 ## Frequency Counter
 
@@ -157,12 +157,20 @@ Implement a function called countUniqueValues, which accepts a sorted array, and
 
 [My Solution](./../CourseExercises/MultiplePointers/UniqueValues.js)(Same as the teacher 😊)
 
-### SLIDING WINDOW
+## SLIDING WINDOW
 
-This pattern involves creating a window which can either be an array or number from one position to another. 
+This pattern involves creating a window which can either be an array or number from one position to another.
+
 Depending on a certain condition, the window either increases or closes (and a new window is created).
+
 Very useful for keeping track of a subset of data in an array/string etc.
 
-#### An Example
+### Example
 
 Write a function called maxSubarraySum which accepts an array of integers and a number called n. The function should calculate the maximum sum of n consecutive elements in the array.
+
+[Naive Solution](./../CourseExercises/SlidingWindow/naiveMaxSubarraySum.js) 😢 
+
+[My Solution](./../CourseExercises/MultiplePointers/UniqueValues.js) 😊
+
+[Teacher Solution](./../CourseExercises/MultiplePointers/UniqueValues.js) ✔️
