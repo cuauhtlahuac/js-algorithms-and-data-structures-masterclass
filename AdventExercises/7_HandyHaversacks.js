@@ -17,104 +17,173 @@ const rules = getDocument('7_test.txt').split(/\n/g);
 // pero inclusi si exiten moradas que puedan llevar azules y/o blancas entonces también cuentan
 // mismo caso para bolsas negras.
 
-
-
 /*
 		tree - 
 		new Bag - nodo.
 */
 
 class Tree {
-	constructor(root, nodes){
+	constructor(root, nodes) {
 		this.root = root;
 		this.nodes = nodes;
 	}
-	findNode(id){
-		return this.nodes[id]
+	findNode(id) {
+		return this.nodes[id];
 	}
-	createNode(id, children){
-		const childrenL = [];
-		let newNode =  this.findNode(id) ? this.findNode(id) : new Node(id, null, null);
-		
+
+	createNode(id, children) {
+		// check if the objet already exist
+		let newNode = this.findNode(id)
+			? this.findNode(id)
+			: new Node(id, null, null);
+
+		// Por cada hijo
 		for (const child of children) {
-			if(this.findNode(child)){
-				childrenL.push(this.findNode(child))
-			}else{
-				const node = new Node(child, null, newNode);
-				childrenL.push(node)
-			}
+			// Si el hijo existe en los nodos regresame ese hijo
+			let childNode = this.findNode(child)
+				? this.findNode(child)
+				: // Si no crea uno nuevo
+				new Node(child, null, null);
+
+			newNode.insertChild(childNode);
+
+			childNode.insertParent(newNode);
+			// colocamos en el array de node el children node
+			this.nodes[childNode.id] = childNode;
 		}
 
-		newNode.children = childrenL;
+		this.nodes[newNode.id] = newNode;
+
 		return newNode;
 	}
-	countNodes(){}
+	// solo falta un metodo para insertar los padre de los padres
+	countNodes() {}
 }
 
 class Node {
-	constructor(id, children, parent){
+	constructor(id, children = [], parents = []) {
 		this.id = id;
-		this.children = children;
-		this.parent = parent;
+		this.children = children === null ? [] : children;
+		this.parents = parents === null ? [] : parents;
+	}
+	
+	insertChild(node) {
+		this.insertNode(node, this.children);
+	}
+	
+	insertParent(node) {
+		if (this.parents.length < 1) {
+			this.parents.push(node);
+		} else {
+			if (node.parents.length > 0) {
+				this.insertNodes(this.parents, node.parents);
+			}
+		}
+	}
+
+	insertNode(node, arr) {
+		const nodeIndex = arr.findIndex(nodeInd => {
+			return node.id === nodeInd.id;
+		});
+
+		if (nodeIndex < 0) {
+			arr.push(node);
+		}
+	}
+	
+	insertNodes(arr1, arr2) {
+		let large;
+		let short;
+
+		if (arr1.length >= arr2.length) {
+			large = arr1;
+			short = arr2;
+		} else {
+			large = arr2;
+			short = arr1;
+		}
+		console.log(
+			'>------------>>>  Nodes\n',
+			{large, short},
+			'\nNodes  <<<- - - - - - - - <\n\n',
+		);
+
+		let arr3 = [];
+			large.forEach((item, i) => {
+			if(short[i] && item.id !== short[i].id){
+				arr3.push(item);	
+				arr3.push(short[i]);	
+			}
+		});
+		console.log(`ARR3 ${this.id}`, arr3);
+		this.parents = arr3;
 	}
 }
 
-
 function handyHaversacks(rules, luggage) {
 	const tree = new Tree(null, {});
-	// Pasar como parámetro el nombre de la bolsa
-	// como parámetro las reglas
 
-	// Si encuentras contain no others bags do nothing
-	
-	// Sí encuentras el nombre de la bolsa...
-	rules.forEach(rule => {
-		console.log(rule);
-		if(findTheWord(rule, luggage)){
-			console.log(luggage, " found ----------------------");
-			//...entonces guarda el nombre de la bolsa que la puede contener
-			const bagRe = new RegExp(/.*(?=\s+bags\s+contain)/, 'g')
-			const container = bagRe.match(rule);
-			console.log(container);
-		}
-			// Sí encuentras alguna de las bolsas que contiene tu bolsa entonces guarda el nombre
-			// node[key] key in obj
-			tree.createNode("", null)
+	rules.forEach((rule, ind) => {
+		console.log(
+			`\n\n${ind +
+				1}: *_*_*_*_*_*_*_*_*_*_*_*_*_*_* rule *_*_*_*_*_*_*_*_*_*_*_*_*_*_*\n${rule}`,
+		);
+		console.log(
+			`_________________________*_________________________________\n\n`,
+		);
 
-
-				// Si el valor del shiny gold  { {children: [node]}}
-		// 
+		const { container, children } = getContainerAndChildren(rule);
+		console.log({ container, children });
+		tree.createNode(container, children);
 	});
+	console.log({ tree: tree.nodes[luggage] });
 }
-const node1 = new Node("59898", null, null)
-
-const tree = new Tree(null, {});
-
-const node2 = new Node("5s15d1", [node1], [node1] );
-console.log(node2.parent, node2.children);
 
 console.log(handyHaversacks(rules, 'shiny gold'));
 
-console.log(tree.children["5s15d1"]); // comun // function 
+/*
+ UTILS ...
+*/
 
+function findTheWord(phrase, word) {
+	for (let index = 0; index < phrase.length; index++) {
+		let wordFound = false;
+		const element = phrase[index];
 
+		if (phrase.charCodeAt(index) === word.charCodeAt(0)) {
+			if (phrase.charCodeAt(index + 1) === word.charCodeAt(1)) {
+				for (let windex = 0; windex < word.length; windex++) {
+					const element = word[windex];
+					wordFound = phrase[index + windex] !== element ? false : true;
+				}
+			}
+		}
 
-function findTheWord(phrase, word){
-  for (let index = 0; index < phrase.length; index++) {
-    let wordFound = false;
-    const element = phrase[index];
+		if (wordFound) {
+			return true;
+		}
+	}
+}
 
-    if(phrase.charCodeAt(index) === word.charCodeAt(0)){
-      if(phrase.charCodeAt(index + 1) === word.charCodeAt(1)){
-        for (let windex = 0; windex < word.length; windex++) {
-          const element = word[windex];
-          wordFound = phrase[index + windex] !== element ? false : true;
-        }        
-      }
-    }
+function getContainerAndChildren(rule) {
+	const [ container, children ] = rule.split('contain');
+	const newContainer = getContainer(container);
+	const newChildren = getChildren(children);
+	return { container: newContainer, children: newChildren };
+}
 
-    if(wordFound){
-      return true;
-    }
-  }
+function getContainer(containerText) {
+	const [ container ] = containerText.split('bags');
+	return container.trim();
+}
+
+function getChildren(childrenText) {
+	const arrChildren = childrenText.split(',');
+	let currentChildren = [];
+
+	arrChildren.forEach(element => {
+		const [ child ] = element.slice(3).split('bag');
+		currentChildren.push(child.trim());
+	});
+	return currentChildren;
 }

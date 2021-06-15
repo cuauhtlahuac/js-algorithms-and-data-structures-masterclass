@@ -14,6 +14,8 @@
     - [countUniqueValues](#countuniquevalues)
   - [SLIDING WINDOW](#sliding-window)
     - [Example](#example-2)
+  - [Divide and Conquer](#divide-and-conquer)
+    - [Example](#example-3)
 
 ## Frequency Counter
 
@@ -174,3 +176,13 @@ Write a function called maxSubarraySum which accepts an array of integers and a 
 [My Solution](./../CourseExercises/MultiplePointers/UniqueValues.js) 😊
 
 [Teacher Solution](./../CourseExercises/MultiplePointers/UniqueValues.js) ✔️
+
+## Divide and Conquer
+
+This pattern involves dividing a data set into smaller chunks and then repeating a process with a subset of data.
+
+This pattern can tremendously **decrease time complexity**
+
+### Example
+
+Given a sorted array of integers, write a function called search, that accepts a value and returns the index where the value passed to the function is located. If the value is not found, return -1
