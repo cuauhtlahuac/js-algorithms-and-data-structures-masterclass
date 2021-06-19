@@ -4,39 +4,19 @@ You can solve this using the frequency counter pattern OR the multiple pointers 
 */
 
 function areThereDuplicates(...args) {
-  // good luck. (supply any arguments you deem necessary.)
-  let start = 0;
-  let end = args.length -1;
-  let middle = end / 2;
-  
-  if(typeof args[1] === 'string'){
-    for (const i in args)  {
-      console.log(middle, i);
-      if(middle <= i) return false;
-
-      if(args[start].charCodeAt() === args[end].charCodeAt()) return true;
-
-      if(args[start].charCodeAt() < args[end].charCodeAt()){
-        end--;
-      }else{
-        start++;
-      };
-  }  
-  } else {
-    for (const i in args)  {
-
-      if(middle === i) return false;
-
-      if(args[start] === args[end]) return true;
-
-      if(args[start] < args[end]){
-        end--;
-      }else{
-        start++;
-      };
-  }  
-    
-  }
+  // good luck. (supply any arguments you deem necessary.)   
+   if(args.length <= 0) return false;
+ 
+   const obj_a = {};
+ 
+   for(let char of args){
+     obj_a[char] = (obj_a[char] += 1) || (obj_a[char] = 1);
+   }
+   for(let item in obj_a){
+     if(obj_a[item] > 1) return true;
+ 
+   }
+   return false
 }
 
 console.log(areThereDuplicates(1,2,3))// false
