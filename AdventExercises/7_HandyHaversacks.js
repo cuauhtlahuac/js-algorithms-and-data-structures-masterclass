@@ -10,54 +10,69 @@ const getDocument = docRoute => {
 	}
 };
 
-const rules = getDocument('7_test.txt').split(/\n/g);
+const rules = getDocument('7_input.txt').split(/\n/g);
 
 // Necesito hallar las bolsas que puedan contenter mi "shiny gold bag"
 // Es decir, si las azules o blancas pueden contener mi bolsa entonces cuentan como válidas
-// pero inclusi si exiten moradas que puedan llevar azules y/o blancas entonces también cuentan
+// pero incluir si exiten moradas que puedan llevar azules y/o blancas entonces también cuentan
 // mismo caso para bolsas negras.
 
-/*
-		tree - 
-		new Bag - nodo.
-*/
-
 class Tree {
-	constructor(root, nodes) {
-		this.root = root;
+	constructor(luggage, nodes) {
+		this.luggage = luggage;
 		this.nodes = nodes;
+		this.root = null;
+		this.counter = 0;
 	}
 	findNode(id) {
 		return this.nodes[id];
 	}
 
 	createNode(id, children) {
-		// check if the objet already exist
-		let newNode = this.findNode(id)
-			? this.findNode(id)
-			: new Node(id, null, null);
+		// check if the objet already exist,
+		let newNode = this.findNode(id) || new Node(id, null, null);
 
-		// Por cada hijo
 		for (const child of children) {
-			// Si el hijo existe en los nodos regresame ese hijo
-			let childNode = this.findNode(child)
-				? this.findNode(child)
-				: // Si no crea uno nuevo
-				new Node(child, null, null);
+			// Si el hijo existe en los nodos regresame ese hijo sino crea uno
+			let childNode = this.findNode(child) || new Node(child, null, null);
 
+			// guardamos el hijo en el papá
 			newNode.insertChild(childNode);
 
+			// We save the parent in the new child
 			childNode.insertParent(newNode);
-			// colocamos en el array de node el children node
+
+			// here we save the child in node list
 			this.nodes[childNode.id] = childNode;
 		}
 
+		// We save the newNode in nodes list
 		this.nodes[newNode.id] = newNode;
 
 		return newNode;
 	}
-	// solo falta un metodo para insertar los padre de los padres
-	countNodes() {}
+
+	countParents(node) {
+		return this.nodes[node].parents.length;
+	}
+
+	countContainingParents(node){ 
+			const obj = {}
+			return this.countContainingParentsRecursive(node, obj)
+	}
+
+	countContainingParentsRecursive(node, obj){
+		let counter = 0;
+		node.parents.forEach((parent) => {
+			if(!(obj[parent.id])){ // Stopping condition
+				obj[parent.id] = parent;
+				counter += this.countContainingParentsRecursive(parent, obj);
+				counter++;
+			}
+		})
+
+		return counter;
+	}
 }
 
 class Node {
@@ -66,19 +81,17 @@ class Node {
 		this.children = children === null ? [] : children;
 		this.parents = parents === null ? [] : parents;
 	}
-	
+
 	insertChild(node) {
 		this.insertNode(node, this.children);
 	}
-	
+
 	insertParent(node) {
-		if (this.parents.length < 1) {
-			this.parents.push(node);
-		} else {
-			if (node.parents.length > 0) {
-				this.insertNodes(this.parents, node.parents);
-			}
-		}
+		this.insertNode(node, this.parents);
+
+/* 		if (node.parents.length > 0) {
+			this.insertNodes(node.parents);
+		} */
 	}
 
 	insertNode(node, arr) {
@@ -90,53 +103,24 @@ class Node {
 			arr.push(node);
 		}
 	}
-	
-	insertNodes(arr1, arr2) {
-		let large;
-		let short;
 
-		if (arr1.length >= arr2.length) {
-			large = arr1;
-			short = arr2;
-		} else {
-			large = arr2;
-			short = arr1;
-		}
-		console.log(
-			'>------------>>>  Nodes\n',
-			{large, short},
-			'\nNodes  <<<- - - - - - - - <\n\n',
-		);
-
-		let arr3 = [];
-			large.forEach((item, i) => {
-			if(short[i] && item.id !== short[i].id){
-				arr3.push(item);	
-				arr3.push(short[i]);	
-			}
+/* 	insertNodes(parents) {
+		parents.forEach(node => {
+			this.insertNode(node, this.parents);
 		});
-		console.log(`ARR3 ${this.id}`, arr3);
-		this.parents = arr3;
-	}
+	} */
 }
 
 function handyHaversacks(rules, luggage) {
-	const tree = new Tree(null, {});
+	const tree = new Tree(luggage, {});
 
 	rules.forEach((rule, ind) => {
-		console.log(
-			`\n\n${ind +
-				1}: *_*_*_*_*_*_*_*_*_*_*_*_*_*_* rule *_*_*_*_*_*_*_*_*_*_*_*_*_*_*\n${rule}`,
-		);
-		console.log(
-			`_________________________*_________________________________\n\n`,
-		);
-
 		const { container, children } = getContainerAndChildren(rule);
-		console.log({ container, children });
+
 		tree.createNode(container, children);
 	});
-	console.log({ tree: tree.nodes[luggage] });
+
+	return tree.countContainingParents(tree.findNode(luggage));
 }
 
 console.log(handyHaversacks(rules, 'shiny gold'));
@@ -187,3 +171,6 @@ function getChildren(childrenText) {
 	});
 	return currentChildren;
 }
+// Ideas para debuguear
+// gguardar un has child node tru / false
+//
