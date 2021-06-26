@@ -73,6 +73,20 @@ class Tree {
 
 		return counter;
 	}
+
+	countContainingParentsIterative(node){
+		let listOfParents = {}
+		node.parents.forEach((parent) => {
+			listOfParents[parent.id] = parent;
+		})
+		let obj = {};
+		function foo(parent){
+			
+		}
+		for(parent in listOfParents){
+			// [n1, n2, n3]
+		}
+	}
 }
 
 class Node {
