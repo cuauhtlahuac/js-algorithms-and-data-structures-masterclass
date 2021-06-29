@@ -9,8 +9,8 @@ All files generated from the Udemy Course JS Algorithms and Data Structures.
 3. [Analyzing Performance of Arrays and Objects](./notes/AnalyzingPerformanceArraysObjects.md)
 4. [Problem Solving Approach](./notes/ProblemSolvingApproach.md).
 5. [Problem Solving Patterns](./notes/ProblemSolvingPatterns.md).
-6. 100% Optional Challenges.
-7. Recursion.
+6. [100% Optional Challenges](./CourseExercises/).
+7. [Recursion](./notes/Recursion.md).
 8. Recursion Problem Set.
 9. Bonus CHALLENGING Recursion Problems.
 10. Searching Algorithms.
