@@ -76,3 +76,14 @@ function countDown(num){
 ```
 
 [Check someRange example function here](../CourseExercises/Recursion/sumrange.js)
+
+
+## Factorial
+
+The form to write a factorial is number with a exclamation sign after: 4!
+
+The factorial means that the number will be multiply for the previous numbers like:
+
+4 * 3 * 2 * 1
+
+[factorial function here](../CourseExercises/Recursion/factorial.js)
