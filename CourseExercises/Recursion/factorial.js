@@ -7,3 +7,10 @@ function iterativeFactorial(num){
 }
 
 iterativeFactorial(3)
+
+function recursiveSolution(num){
+  if(num < 2) return num;
+  return num *= recursiveSolution(num - 1)
+}
+
+console.log(recursiveSolution(4));
