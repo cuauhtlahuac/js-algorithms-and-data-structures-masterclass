@@ -87,3 +87,40 @@ The factorial means that the number will be multiply for the previous numbers li
 4 * 3 * 2 * 1
 
 [factorial function here](../CourseExercises/Recursion/factorial.js)
+
+## Helper Method Recursion
+
+We have two functions, one is the normal main, the other is the recursive that is inside of the main function.
+
+The principal issue that we solve with this method is avoid the re-assignation of values in the variables inside of the function
+
+like the next example:
+
+```js
+function collectOdds(nums){
+  let result = [] // This variable will be reassigned every time
+  collectOdds...
+}
+```
+
+example of how to use correctly this method in order to use the variable that we need.
+
+```js
+  function outer(input){
+    
+    var outerScopedVariable = []
+
+    function helper(helperInput){
+        // modify the outerScopedVariable
+        helper(helperInput--)
+    }
+    
+    helper(input)
+
+    return outerScopedVariable;
+
+}
+```
+
+[Helper Method Recursion](../CourseExercises/Recursion/helperMethodRecursion.js)
+
