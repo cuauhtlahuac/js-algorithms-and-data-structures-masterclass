@@ -124,3 +124,8 @@ example of how to use correctly this method in order to use the variable that we
 
 [Helper Method Recursion](../CourseExercises/Recursion/helperMethodRecursion.js)
 
+### Solved with Pure Recursion
+
+[Helper Method With Pure Recursion](../CourseExercises/Recursion/helperMethodPureRecursion.js)
+
+
