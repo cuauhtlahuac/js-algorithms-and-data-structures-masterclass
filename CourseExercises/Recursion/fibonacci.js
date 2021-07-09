@@ -1,19 +1,4 @@
-class CheckTime {
-	constructor(date) {
-		this.currentTime = date;
-    this.timer = this.timer.bind(this)
-	}
-	timer(func) {
-		const result = func;
-    console.log("Result = ", result);
-
-    let newTime = new Date()
-
-    let diff = (newTime - this.currentTime) / 1000;
-    console.log('executes in: ', diff, 'seconds');
-    this.currentTime = newTime;
-	}
-}
+var CheckTime = require('../utils/timer');
 
 function fib(n) {
 	if (n <= 2) return 1;
