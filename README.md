@@ -11,10 +11,10 @@ All files generated from the Udemy Course JS Algorithms and Data Structures.
 5. [Problem Solving Patterns](./notes/ProblemSolvingPatterns.md).
 6. [100% Optional Challenges](./CourseExercises/).
 7. [Recursion](./notes/Recursion.md).
-8. Recursion Problem Set.
-9. Bonus CHALLENGING Recursion Problems.
-10. Searching Algorithms.
-11. Boubble Sort.
+8. [Recursion Problem Set](./CourseExercises/Recursion).
+9. [Bonus CHALLENGING Recursion Problems](./CourseExercises/Recursion).
+10. [Searching Algorithms](./notes/SearchingAlgorithms.md).
+11. Bubble Sort.
 12. Selection Sort.
 13. Insertion Sort.
 14. Comparing Bubble, Selection, and Insertion sort.
