@@ -8,7 +8,9 @@ Objectives
   - [What a searching algorithm is](#what-a-searching-algorithm-is)
     - [JavaScript has search!](#javascript-has-search)
       - [They are linear search](#they-are-linear-search)
-        - [Let write a linear search function code.](#let-write-a-linear-search-function-code)
+        - [Let's write a linear search function code.](#lets-write-a-linear-search-function-code)
+    - [Binary Search](#binary-search)
+      - [Let's write a Binary search function.](#lets-write-a-binary-search-function)
 
 ## What a searching algorithm is
 
@@ -32,7 +34,7 @@ The linear search means that we gonna search item by item until we found and If 
 
 > Linear search is rarely practical because other search algorithms and schemes, such as the **binary search algorithm*** and **hash tables**, allow significantly faster searching for all but short lists.
 
-##### Let write a linear search function code.
+##### Let's write a linear search function code.
 
 **Linear Search Pseudocode**
 
@@ -41,4 +43,27 @@ The linear search means that we gonna search item by item until we found and If 
 - If it is, return the index at which the element is found
 - If the value is never found, return -1
 
-[go to code...](../CourseExercises/LinearSearch/linearCode.js)
+[go to the code...](../CourseExercises/Searching/linearSearch.js)
+
+### Binary Search
+
+Binary search is a much faster form of search
+Rather than eliminating one element at a time, you can eliminate half of the remaining elements at a time
+Binary search only works on sorted arrays!
+
+It is like the Yellow Guide example, you don't search page by page, you search first for the middle an so on.
+
+#### Let's write a Binary search function.
+
+**Binary Search Pseudocode**:
+
+- This function accepts a sorted array and a value
+- Create a left pointer at the start of the array, and a right pointer at the end of the array
+- While the left pointer comes before the right pointer:
+- Create a pointer in the middle
+- If you find the value you want, return the index
+- If the value is too small, move the left pointer up
+- If the value is too large, move the right pointer down
+- If you never find the value, return -1
+
+[Go to the code ...](../CourseExercises/Searching/binarySearch.js)
