@@ -11,6 +11,7 @@ Objectives
         - [Let's write a linear search function code.](#lets-write-a-linear-search-function-code)
     - [Binary Search](#binary-search)
       - [Let's write a Binary search function.](#lets-write-a-binary-search-function)
+      - [Big O of Binary Search.](#big-o-of-binary-search)
 
 ## What a searching algorithm is
 
@@ -67,3 +68,35 @@ It is like the Yellow Guide example, you don't search page by page, you search f
 - If you never find the value, return -1
 
 [Go to the code ...](../CourseExercises/Searching/binarySearch.js)
+
+#### Big O of Binary Search.
+
+[2,4,5,9,11,14,15,**19**,21,25,28,30,50,52,60,63]
+
+Suppose we're searching for 13
+
+[2,4,5,**9**,11,14,15]
+
+[11,**14**,15]
+
+[**11**]
+
+NOPE, NOT HERE!
+
+16 elements = 4 "steps"
+
+**To add another "step", we need to double the number of elements**
+
+Let's search for 32
+
+[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,**16**,17,18,19,20,21,22,23,24,25,26,27,28,29,30,32,35]
+[17,18,19,20,21,22,23,**24**,25,26,27,28,29,30,32,35]
+[25,26,27,**28**,29,30,32,35]
+[29,**30**,32,35]
+[**32**,35]
+
+32 elements = 5 "steps" (worst case)
+
+We have a O(log n), witch is almost O(1)!
+
+That's means that every double length of n we gonna add only one more step.
