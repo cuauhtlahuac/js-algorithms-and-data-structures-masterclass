@@ -5,17 +5,16 @@
 Objectives
 
 - [Searching Algorithms.](#searching-algorithms)
-  - [What a searching algorithm is](#what-a-searching-algorithm-is)
-    - [JavaScript has search!](#javascript-has-search)
-      - [They are linear search](#they-are-linear-search)
-        - [Let's write a linear search function code.](#lets-write-a-linear-search-function-code)
-    - [Binary Search](#binary-search)
-      - [Let's write a Binary search function.](#lets-write-a-binary-search-function)
-      - [Big O of Binary Search.](#big-o-of-binary-search)
+  - [JavaScript has search!](#javascript-has-search)
+    - [They are linear search](#they-are-linear-search)
+      - [Let's write a linear search function code.](#lets-write-a-linear-search-function-code)
+  - [Binary Search](#binary-search)
+    - [Let's write a Binary search function.](#lets-write-a-binary-search-function)
+    - [Big O of Binary Search.](#big-o-of-binary-search)
+  - [Naive String Search](#naive-string-search)
+    - [Naive Pseudocode](#naive-pseudocode)
 
-## What a searching algorithm is
-
-### JavaScript has search!
+## JavaScript has search!
 There are many different search methods on arrays in JavaScript:
 
 indexOf
@@ -25,7 +24,7 @@ findIndex
 
 They are almost the same.
 
-#### They are linear search
+### They are linear search
 
 The linear search means that we gonna search item by item until we found and If we doesn't found  it then return something like false.
 
@@ -35,7 +34,7 @@ The linear search means that we gonna search item by item until we found and If 
 
 > Linear search is rarely practical because other search algorithms and schemes, such as the **binary search algorithm*** and **hash tables**, allow significantly faster searching for all but short lists.
 
-##### Let's write a linear search function code.
+#### Let's write a linear search function code.
 
 **Linear Search Pseudocode**
 
@@ -46,7 +45,7 @@ The linear search means that we gonna search item by item until we found and If 
 
 [go to the code...](../CourseExercises/Searching/linearSearch.js)
 
-### Binary Search
+## Binary Search
 
 Binary search is a much faster form of search
 Rather than eliminating one element at a time, you can eliminate half of the remaining elements at a time
@@ -54,7 +53,7 @@ Binary search only works on sorted arrays!
 
 It is like the Yellow Guide example, you don't search page by page, you search first for the middle an so on.
 
-#### Let's write a Binary search function.
+### Let's write a Binary search function.
 
 **Binary Search Pseudocode**:
 
@@ -69,7 +68,7 @@ It is like the Yellow Guide example, you don't search page by page, you search f
 
 [Go to the code ...](../CourseExercises/Searching/binarySearch.js)
 
-#### Big O of Binary Search.
+### Big O of Binary Search.
 
 [2,4,5,9,11,14,15,**19**,21,25,28,30,50,52,60,63]
 
@@ -104,3 +103,18 @@ Let's search for 32
 We have a O(log n), witch is almost O(1)!
 
 That's means that every double length of n we gonna add only one more step.
+
+## Naive String Search
+
+In this case we walk char by char, even when we search for a single char or a patter like "omg".
+
+### Naive Pseudocode
+
+- Loop over the longer string
+- Loop over the shorter string
+- If the characters don't match, break out of the inner loop
+- If the characters do match, keep going
+- If you complete the inner loop and find a match, increment the count of matches
+- Return the count
+
+[Go to code...]()
