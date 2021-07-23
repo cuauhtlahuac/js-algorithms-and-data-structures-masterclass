@@ -117,4 +117,4 @@ In this case we walk char by char, even when we search for a single char or a pa
 - If you complete the inner loop and find a match, increment the count of matches
 - Return the count
 
-[Go to code...]()
+[Go to code...](../CourseExercises/DivideAndConquer/searchNaive.js)
