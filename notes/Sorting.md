@@ -63,7 +63,6 @@ Sorting values, the largest value is bubble to the top.
 
 Many sorting algorithms involve some type of swapping functionality (e.g. swapping to numbers to put them in order)
 
-
 In Javascript...
 ```js
 // ES5
@@ -88,3 +87,23 @@ If arr[j] is greater than arr[j+1], swap those two values!
 Return the sorted array
 
 [go to code...](./../CourseExercises/BubbleSort/bubbleSort.js)
+
+## Selection Sort
+
+Similar to bubble sort, but instead of first placing large values into sorted position, it places small values into sorted position
+
+[ 5, 3, 4, 1, 2 ]
+[ 5, 3, 4, 1, 2 ]
+[ 5, 3, 4, 1, 2 ]
+[ 5, 3, 4, 1, 2 ]
+[ 1, 3, 4, 5, 2 ] - 1 is now in its sorted position!
+
+### Selection Sort Pseudocode
+
+* Store the first element as the smallest value you've seen so far.
+* Compare this item to the next item in the array until you find a smaller number.
+* If a smaller number is found, designate that smaller number to be the new "minimum" and continue until the end of the array.
+* If the "minimum" is not the value (index) you initially began with, swap the two values.
+* Repeat this with the next element until the array is sorted.
+
+[go to code...](./../CourseExercises/SelectionSort/selectionSort.js)
