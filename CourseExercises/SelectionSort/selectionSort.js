@@ -27,3 +27,6 @@ function selectionSort(arr) {
 console.log(
 	selectionSort([ 43, 56, 23, 1, 10, 7, 2, 89, 3, 88, 4, 90, 99, 652 ]),
 );
+console.log(
+	selectionSort([0,2,34,22,10,19,17]),
+);
