@@ -107,3 +107,31 @@ Similar to bubble sort, but instead of first placing large values into sorted po
 * Repeat this with the next element until the array is sorted.
 
 [go to code...](./../CourseExercises/SelectionSort/selectionSort.js)
+
+## Insertion Sort
+
+[Insertion Sort slides ](https://cs.slides.com/colt_steele/elementary-sorting-algorithms#/14/0/6)
+
+Builds up the sort by gradually creating a larger left half which is always sorted
+
+It's mean that you need to sort from left to right and search for the correct place of the next right current element.
+
+[ _5_, **3**, 4, 1, 2 ]
+
+[ _3, 5_, **4**, 1, 2 ]
+
+[ _3, 4, 5_, **1**, 2 ]
+
+[ _1, 3, 4, 5_, **2** ]
+
+[ **1, 2, 3, 4, 5** ]
+
+
+### Insertion Sort Pseudocode
+
+- Start by picking the second element in the array
+- Now compare the second element with the one before it and swap if necessary.
+- Continue to the next element and if it is in the incorrect order, iterate through the sorted portion (i.e. the left side) to place the element in the correct place.
+- Repeat until the array is sorted.
+
+[Go to code...](./../CourseExercises/InsertionSort/insertionSort.js)
