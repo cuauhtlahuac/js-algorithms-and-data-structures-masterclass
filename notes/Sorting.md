@@ -7,8 +7,14 @@
 [Visual sorting](https://visualgo.net/en/sorting)
 
 [Bubble Sort](#bubble-sort)
+
 [What is sorting?](#what-is-sorting)
+
 [Javascript has a sort method](#javascript-has-a-sort-method)
+
+[Selection Sort](#selection-sort)
+
+[Insertion Sort](#insertion-sort)
 
 ## What is sorting?
 
@@ -135,3 +141,9 @@ It's mean that you need to sort from left to right and search for the correct pl
 - Repeat until the array is sorted.
 
 [Go to code...](./../CourseExercises/InsertionSort/insertionSort.js)
+
+# "Crazier" Sort
+
+intermediate sorting algorithm
+
+### Merge sort
