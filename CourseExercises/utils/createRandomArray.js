@@ -2,7 +2,7 @@ function createRandomArray(length){
   return Array.apply(null, {length}).map(Function.call, Math.random);
 }
 
-const largeArray = createRandomArray(20000);
+const largeArray = createRandomArray(100000);
 
 console.log({largeArray});
 
