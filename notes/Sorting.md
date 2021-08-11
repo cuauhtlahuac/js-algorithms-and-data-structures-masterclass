@@ -6,15 +6,19 @@
 
 [Visual sorting](https://visualgo.net/en/sorting)
 
-[Bubble Sort](#bubble-sort)
+* [Bubble Sort](#bubble-sort)
 
-[What is sorting?](#what-is-sorting)
+* [What is sorting?](#what-is-sorting)
 
-[Javascript has a sort method](#javascript-has-a-sort-method)
+* [Javascript has a sort method](#javascript-has-a-sort-method)
 
-[Selection Sort](#selection-sort)
+* [Selection Sort](#selection-sort)
 
-[Insertion Sort](#insertion-sort)
+* [Insertion Sort](#insertion-sort)
+
+
+* [Crazier Sorts](#crazier-sorts)
+  * [Merge Sort](#merge-sort)
 
 ## What is sorting?
 
@@ -146,6 +150,8 @@ It's mean that you need to sort from left to right and search for the correct pl
 
 **Intermediate sorting algorithms.**
 
+[https://cs.slides.com/colt_steele/intermediate-sorting-algorithms](Slides)
+
 ## FASTER SORTS
 There is a family of sorting algorithms that can improve time complexity from O(n) to O(n log n)
 There's a tradeoff between efficiency and simplicity
@@ -172,3 +178,10 @@ Works by decomposing an array into smaller arrays of 0 or 1 elements, then build
     - If the value in the first array is smaller than the value in the second array, push the value in the first array into our results and move on to the next value in the first array
     - If the value in the first array is larger than the value in the second array, push the value in the second array into our results and move on to the next value in the second array
     - Once we exhaust one array, push in all remaining values from the other array
+
+
+### MergeSort Pseudocode
+
+- Break up the array into halves until you have arrays that are empty or have one element
+- Once you have smaller sorted arrays, merge those arrays with other sorted arrays until you are back at the full length of the array
+- Once the array has been merged back together, return the merged (and sorted!) array
