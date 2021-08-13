@@ -1,4 +1,4 @@
-function mergingArrays(arr1, arr2) {
+function mergingArrays(arr1 = [], arr2 = []) {
   // Create an empty array, take a look at the smallest values in each input array
   let array = [];
   let i = 0;
@@ -23,5 +23,7 @@ function mergingArrays(arr1, arr2) {
 }
 
 console.log(mergingArrays([2,4,6,9], [1,3,5,7]));
+
+module.exports = mergingArrays;
 
 
