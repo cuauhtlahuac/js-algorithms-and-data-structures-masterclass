@@ -24,4 +24,6 @@ function merge(arr1, arr2){
 }
 merge([100,200], [1,2,3,5,6])
 
+module.exports = merge;
+
                    
