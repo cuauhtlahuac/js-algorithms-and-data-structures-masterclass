@@ -185,3 +185,38 @@ Works by decomposing an array into smaller arrays of 0 or 1 elements, then build
 - Break up the array into halves until you have arrays that are empty or have one element
 - Once you have smaller sorted arrays, merge those arrays with other sorted arrays until you are back at the full length of the array
 - Once the array has been merged back together, return the merged (and sorted!) array
+
+### Big O of mergeSort
+
+If we start with an array of **8** elements, we split it into two pieces. How many time we have to split in order to get the last one element... in this case is **3**.
+
+What if we have an array of 32 elements?
+
+| 32 | * **1**
+
+| 16 | 16 |  * **2**
+
+|8 | 8 | 8 | 8 | * **4**
+
+| 4 | 4 | 4 | 4 | 4 | 4 | 4 | 4 | * **8**
+
+| 2 | 2 | 2 | 2 | 2 | 2 | 2 | 2 | 2 | 2 | 2 | 2 | 2 | 2 | 2 | 2 | * **16**
+
+|1|1|1|1|1|1|1|1|1|1|1|1|1|1|1|1|1|1|1|1|1|1|1|1|1|1|1|1|1|1|1|1|    (we finally end with **32** elements and **5** splits)
+
+If we pay attention we would notice that the proportion of:
+
+**8 * 3** = 2 * 2 * 2 or **2^3** and **32 * 5** = 2 * 2 * 2 * 2 * 2 or **2^5**
+
+This proportion of 8 = 3 and 32 = 5 means that's **O(log n)**
+
+if we add the **O(n)** that we do with the merge operation we finally got:
+
+**O(n log n)**
+
+| Time Complexity (Best) | Time Complexity (Average) | Time Complexity (Worst) | Space Complexity |
+| ---------------------- | ------------------------- | ----------------------- | ---------------- |
+| O(n log n)             | O(n log n)                | O(n log n)              | O(n)             |
+
+
+
