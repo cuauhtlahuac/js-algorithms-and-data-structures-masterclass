@@ -227,4 +227,16 @@ Like merge sort, exploits the fact that arrays of 0 or 1 element are always sort
 Works by selecting one element (called the "pivot") and finding the index where the pivot should end up in the sorted array
 Once the pivot is positioned appropriately, quick sort can be applied on either side of the pivot
 
-### 
+### Quick sort visualitation
+
+[Here you can visualize the quick sort. remember, you need to select the correct tab name](https://visualgo.net/en/sorting)
+
+It's tricky because we have the first element and we need to put in the rigth place, so, if we have for example the number 10 we need to check how many numbers do we have less than this ten and count and put one by one in the rigth position of the pivot wich is 10, swap it and sort it the same metod the left list of the numbers. This process must be repetead until the array have been all sorted.
+
+### Quick sort pseudocode
+Divide step: Choose an item p (known as the pivot)
+Then partition the items of a[i..j] into three parts: a[i..m-1], a[m], and a[m+1..j].
+a[i..m-1] (possibly empty) contains items that are smaller than p.
+a[m] is the pivot p, i.e. index m is the correct position for p in the sorted order of array a.
+a[m+1..j] (possibly empty) contains items that are greater than or equal to p.
+Then, recursively sort the two parts.
