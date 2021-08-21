@@ -29,20 +29,20 @@ class Tree {
 	}
 
 	createNode(id, children) {
-		// check if the objet already exist,
+		// Check if the objet already exist.
 		let newNode = this.findNode(id) || new Node(id, null, null);
 
 		for (const child of children) {
 			// Si el hijo existe en los nodos regresame ese hijo sino crea uno
 			let childNode = this.findNode(child) || new Node(child, null, null);
 
-			// guardamos el hijo en el papá
+			// Guardamos el hijo en el papá
 			newNode.insertChild(childNode);
 
 			// We save the parent in the new child
 			childNode.insertParent(newNode);
 
-			// here we save the child in node list
+			// Here we save the child in node list
 			this.nodes[childNode.id] = childNode;
 		}
 
@@ -56,36 +56,46 @@ class Tree {
 		return this.nodes[node].parents.length;
 	}
 
-	countContainingParents(node){ 
-			const obj = {}
-			return this.countContainingParentsRecursive(node, obj)
+	countContainingParents(node) {
+		const obj = {};
+		return this.countContainingParentsRecursive(node, obj);
 	}
 
-	countContainingParentsRecursive(node, obj){
+	countContainingParentsRecursive(node, obj) {
 		let counter = 0;
-		node.parents.forEach((parent) => {
-			if(!(obj[parent.id])){ // Stopping condition
+
+		node.parents.forEach(parent => {
+			if (!obj[parent.id]) {
+				// Stopping condition
 				obj[parent.id] = parent;
 				counter += this.countContainingParentsRecursive(parent, obj);
 				counter++;
 			}
-		})
+		});
 
 		return counter;
 	}
 
-	countContainingParentsIterative(node){
-		let listOfParents = {}
-		node.parents.forEach((parent) => {
-			listOfParents[parent.id] = parent;
-		})
-		let obj = {};
-		function foo(parent){
-			
+	countContainingParentsIterative(node) {
+		let listOfParents = [];
+
+		node.parents.forEach(parent => {
+			listOfParents.push(parent.parents);
+		});
+		console.log({X: listOfParents[1]});
+		let queue = [];
+
+
+		// [ [Node], [Node], [Node], [Node] ]
+		let counter = 0;
+		while(listOfParents.length > counter){
+			if(listOfParents[counter].length > 0){
+
+				queue.push(listOfParents[counter][0].parents)
+			}
+			counter++
 		}
-		for(parent in listOfParents){
-			// [n1, n2, n3]
-		}
+		console.log({queue});
 	}
 }
 
@@ -103,7 +113,7 @@ class Node {
 	insertParent(node) {
 		this.insertNode(node, this.parents);
 
-/* 		if (node.parents.length > 0) {
+		/* 		if (node.parents.length > 0) {
 			this.insertNodes(node.parents);
 		} */
 	}
@@ -118,7 +128,7 @@ class Node {
 		}
 	}
 
-/* 	insertNodes(parents) {
+	/* 	insertNodes(parents) {
 		parents.forEach(node => {
 			this.insertNode(node, this.parents);
 		});
@@ -133,7 +143,7 @@ function handyHaversacks(rules, luggage) {
 
 		tree.createNode(container, children);
 	});
-
+	tree.countContainingParentsIterative(tree.findNode(luggage));
 	return tree.countContainingParents(tree.findNode(luggage));
 }
 
