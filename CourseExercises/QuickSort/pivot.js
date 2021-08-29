@@ -19,12 +19,13 @@ function pivot(arr, start=0, end=arr.length+1){
   }
   // Swap the starting element (i.e. the pivot) with the pivot index
   swap(arr,start,swapIdx);
+  console.log({arr});
   // Return the pivot index
   return swapIdx;
 }
 
 // Version with ES2015 Syntax
-function pivot(arr, start = 0, end = arr.length - 1) {
+function pivotES2015(arr, start = 0, end = arr.length - 1) {
   const swap = (arr, idx1, idx2) => {
     [arr[idx1], arr[idx2]] = [arr[idx2], arr[idx1]];
   };
