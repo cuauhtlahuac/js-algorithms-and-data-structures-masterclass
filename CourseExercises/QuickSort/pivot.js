@@ -51,4 +51,5 @@ function pivotES2015(arr, start = 0, end = arr.length - 1) {
 }
 
 
-console.log(pivot([4,8,2,1,5,7,6,3]))
+
+module.exports = pivot;
