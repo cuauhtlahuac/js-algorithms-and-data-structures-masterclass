@@ -23,7 +23,6 @@ function pivot(arr, start=0, end=arr.length+1){
   // Swap the starting element (i.e. the pivot) with the pivot index
   // This means that at the final we swap the current swapIdx with the pivot, because the value "start" never changed
   swap(arr,start,swapIdx);
-  console.log({arr});
   // Return the pivot index
   return swapIdx;
 }
