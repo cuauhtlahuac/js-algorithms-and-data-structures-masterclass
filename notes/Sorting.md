@@ -286,3 +286,16 @@ a[i..m-1] (possibly empty) contains items that are smaller than p.
 a[m] is the pivot p, i.e. index m is the correct position for p in the sorted order of array a.
 a[m+1..j] (possibly empty) contains items that are greater than or equal to p.
 Then, recursively sort the two parts.
+
+### Big O of Quicksort
+
+**O(n log n)**
+
+| Time Complexity (Best) | Time Complexity (Average) | Time Complexity (Worst) | Space Complexity |
+| ---------------------- | ------------------------- | ----------------------- | ---------------- |
+| O(n log n)             | O(n log n)                | O(n^2)                  | O(log n)         |
+
+Worst case: 
+
+if the items are all ready sorted because each comparison is gonna require the pivot function n decomposition. To improve we can take a random index or the middle index each time.
+
