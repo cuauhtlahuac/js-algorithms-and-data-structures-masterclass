@@ -299,3 +299,42 @@ Worst case:
 
 if the items are all ready sorted because each comparison is gonna require the pivot function n decomposition. To improve we can take a random index or the middle index each time.
 
+## Radix Sort
+
+[Radix Sort slides](https://cs.slides.com/colt_steele/intermediate-sorting-algorithms#/26)
+
+In the previous algorithms we compare items and see witch is grater and then, we decide the place of this item.
+
+**COMPARISON SORTS**
+
+Average Time Complexity
+
+
+Bubble Sort - O(n^2)
+
+Insertion Sort - O(n^2)
+
+Selection Sort - O(n^2)
+
+-- here we have a improvement --
+
+Quick Sort - O(n log (n))
+
+Merge Sort - O(n log (n))
+
+**Can we do better?**
+
+[wikipedia of comparison sort](https://en.wikipedia.org/wiki/Comparison_sort#:~:text=A%20comparison%20sort%20is%20a,in%20the%20final%20sorted%20list.)
+
+We can differents comparisons!
+
+With Radix sort we first compare the right number and put all this numbers in a bucket, the the second digit and move to the other bucket, and so on.
+
+[simple snippets explanation](https://simplesnippets.tech/radix-sort-algorithm-with-c-code-sorting-algorithms-data-structures-algorithms/)
+
+Radix sort is a non-comparative sorting algorithm. It avoids comparison by creating and distributing elements into buckets according to their radix. For elements with more than one significant digit, this bucketing process is repeated for each digit, while preserving the ordering of the prior step, until all digits have been considered. For this reason, radix sort has also been called bucket sort and digital sort. Typically Radix sort uses counting sort as a subroutine to sort. Radix sort has linear time complexity which is better than O(n log n) of comparative sorting algorithms.
+
+Time complexity: O(d(n+k))
+Space complexity: O(n+k)
+Where d is the no of max digits of the largest no in the digit, n is the no of elements in the list and k is the range of unique elements. Note – This time & space complexity is applicable for those Radix sort algorithms that use Counting Sort as sub routine internally.
+

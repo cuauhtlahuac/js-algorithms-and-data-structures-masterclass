@@ -2,6 +2,8 @@
 
 All files generated from the Udemy Course JS Algorithms and Data Structures.
 
+[simple snippets](https://simplesnippets.tech/): interesting data structure page
+
 ## List of Content.
 
 1. [Introduction.](./notes/intro.md) 
