@@ -324,6 +324,14 @@ Merge Sort - O(n log (n))
 
 **Can we do better?**
 
+- Radix sort is a special sorting algorithm that works on lists of numbers
+
+- It exploits the fact that information about the size of a number is encoded in the number of digits.  
+
+- More digits means a bigger number!
+
+- It never makes comparisons between elements!
+
 [wikipedia of comparison sort](https://en.wikipedia.org/wiki/Comparison_sort#:~:text=A%20comparison%20sort%20is%20a,in%20the%20final%20sorted%20list.)
 
 We can differents comparisons!
@@ -338,3 +346,19 @@ Time complexity: O(d(n+k))
 Space complexity: O(n+k)
 Where d is the no of max digits of the largest no in the digit, n is the no of elements in the list and k is the range of unique elements. Note – This time & space complexity is applicable for those Radix sort algorithms that use Counting Sort as sub routine internally.
 
+### Radix Sort Helpers
+
+In order to implement radix sort, it's helpful to build a few helper functions first:
+
+getDigit(num, place) - returns the digit in num at the given place value
+
+```js
+getDigit(12345, 0); // 5
+getDigit(12345, 1); // 4
+getDigit(12345, 2); // 3
+getDigit(12345, 3); // 2
+getDigit(12345, 4); // 1
+getDigit(12345, 5); // 0
+```
+
+In javascript we don't have a way to get the position of a number, we need to build  a method.
