@@ -1,7 +1,7 @@
 const Radix = require('./radixSortClass');
 
-const bigInteger = 89878977897897897897897897897897897897897897897897897897897789789789789789789789789789789789778978978978978978978978978978978977897897897897897897897897897897897n;
-console.log(bigInteger);
+const bigInteger = 89878977897;
 const radix = new Radix(bigInteger);
 
 console.log(radix.getDigitPositionStringMethod(0));
+console.log(radix.getDigitReminderMethod(0));
