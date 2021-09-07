@@ -362,3 +362,21 @@ getDigit(12345, 5); // 0
 ```
 
 In javascript we don't have a way to get the position of a number, we need to build  a method.
+
+[code example:](../CourseExercises/RadixSort/getDigitHelperTest.js)
+
+#### code explanation:
+
+if we have...
+```js
+getDigit(7323, 2) // we search for position 2 (number 3 counting from index 0)
+```
+
+- `7323 / 100 = 73.32` It's divided by 100 because we search the position 2, thats why `pow(10, position)`
+
+- We gonna cut the numbers after decimal point with `Math.floor` and we get `73`
+
+- Then we use residual operator as last operation to get the number: `73 % 10 = 3` three is the residual and the position that we search.
+
+
+
