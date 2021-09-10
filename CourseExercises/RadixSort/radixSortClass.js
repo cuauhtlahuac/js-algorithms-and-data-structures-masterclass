@@ -1,12 +1,11 @@
 class RadixSort {
 	constructor(integer) {
 		this.integer = integer;
-		console.log(integer);
+		this.numberToString = this.integer + '';
 	}
 	getDigitPositionStringMethod(position) {
-		const numberToString = this.integer + '';
 		return parseInt(
-			numberToString.charAt(numberToString.length - position - 1),
+			this.numberToString.charAt(this.numberToString.length - position - 1),
 			10,
 		);
 	}
@@ -24,6 +23,9 @@ class RadixSort {
         / Math.pow(10, i), // it is equal to for example pow(10, 3) = 1000, pow(2,5)= 32
 			) % 10
 		);
+	}
+	countDigits(){
+		return this.numberToString.length
 	}
 }
 
