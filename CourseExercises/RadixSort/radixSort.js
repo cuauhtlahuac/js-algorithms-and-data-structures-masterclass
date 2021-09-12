@@ -6,13 +6,15 @@ function radixSort(list){
   // - Figure out how many digits the largest number has
   radix.mostDigitNumbers();
 // - Loop from k = 0 up to this largest number of digits
+
+  const bucket = []
 for (let k = 0; k < radix.maxDigitNumber; k++) {
   // - For each iteration of the loop:
   // - Create buckets for each digit (0 to 9)
-  const bucket = []
+bucket[k] = k;
   // - place each number in the corresponding bucket based on its kth digit
   
-  console.log({k});
+  console.log({k,bucket});
 }
 
 // - Replace our existing array with values in our buckets, starting with 0 and going up to 9
