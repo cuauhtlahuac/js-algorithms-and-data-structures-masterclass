@@ -22,11 +22,16 @@ function radixSort(list) {
     
 		// - Replace our existing array with values in our buckets, starting with 0 and going up to 9
     
-    console.log({ k, buckets, number: list[k], max: radix.maxDigitNumber });
+		let tempList = [];
+		for (let j = 0; j < buckets.length; j++) {
+			const bucket = buckets[j];
+			tempList = [...tempList, ...bucket]
+		}
+		list = tempList
 	}
 
 		// - return list at the end!
 		return list;
 }
 
-console.log(radixSort([ 20, 41, 6673, 897, 234, 12, 38, 69, 345, 98789456, 25 ]));
+console.log(radixSort([ 2087897987, 9889479355, 4857897345, 41, 6673, 897, 234, 12, 38, 69, 345, 98789456, 25 ]));
