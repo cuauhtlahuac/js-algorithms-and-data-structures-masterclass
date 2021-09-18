@@ -37,12 +37,16 @@ class RadixSort {
 		return this.convertNumberToString(num).length;
 	}
 
-	createBuckets(start, end){
+	createBuckets(n){
 		let arr = [];
-		for (let i = start; i < end; i++) {
+		for (let i = 0; i < n; i++) {
 			arr[i] = [];
 		}
 		return arr;
+	}
+
+	createBucketTeacherSolution(n) {
+		return Array.from({length: n}, () => []);
 	}
 
 	mostDigitNumbers() {
