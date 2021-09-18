@@ -388,3 +388,11 @@ getDigit(7323, 2) // we search for position 2 (number 3 counting from index 0)
   - place each number in the corresponding bucket based on its kth digit
 - Replace our existing array with values in our buckets, starting with 0 and going up to 9
 - return list at the end!
+
+### Radix Sort Big O
+
+| Time Complexity (Best) | Time Complexity (Average) | Time Complexity (Worst) | Space Complexity |
+| ---------------------- | ------------------------- | ----------------------- | ---------------- |
+| O(nk)                  | O(nk)                     | O(nk)                   | O(n + k)         |
+
+k means the long of digits in the number.
