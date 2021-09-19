@@ -20,13 +20,13 @@ All files generated from the Udemy Course JS Algorithms and Data Structures.
 12. [Selection Sort](./notes/Sorting.md#selection-sort).
 13. [Insertion Sort](./notes/Sorting.md#insertion-sort).
 14. Comparing Bubble, Selection, and Insertion sort.
-15. [Merge Sort](./notes/Sorting.md).
-16. Quick Sort.
-17. Radix Sort.
-18. Data Structures Introduction.
+15. [Merge Sort](./notes/Sorting.md#merge-sort).
+16. [Quick Sort](./notes/Sorting.md#quick-sort).
+17. [Radix Sort](./notes/Sorting.md#radix-sort).
+18. [Data Structures Introduction](./notes/DataStructures.md#introduction).
 19. Singly Linked List.
 20. Doubly Linked List.
-21.Stacks - Queues.
+21. Stacks - Queues.
 22. Binary Search Trees.
 23. Tree Traversal.
 24. Binary Heaps.

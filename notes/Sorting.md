@@ -1,4 +1,6 @@
-# Bubble Sort
+# Sorting
+
+## Resources
 
 [Sorting Slides](https://cs.slides.com/colt_steele/elementary-sorting-algorithms)
 
@@ -6,11 +8,13 @@
 
 [Visual sorting](https://visualgo.net/en/sorting)
 
-* [Bubble Sort](#bubble-sort)
+## Index
 
 * [What is sorting?](#what-is-sorting)
 
 * [Javascript has a sort method](#javascript-has-a-sort-method)
+
+* [Bubble Sort](#bubble-sort)
 
 * [Selection Sort](#selection-sort)
 
@@ -20,6 +24,7 @@
 * [Crazier Sorts](#crazier-sorts)
   * [Merge Sort](#merge-sort)
   * [Quick Sort](#quick-sort)
+  * [Radix Sort](#radix-sort)
 
 ## What is sorting?
 
