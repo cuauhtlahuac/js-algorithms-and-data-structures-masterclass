@@ -1,10 +1,8 @@
 # Data Structures
 
-## Resources
-
-[Slides es2015 class syntax](https://cs.slides.com/colt_steele/es2015-class-syntax)
-
 [Introduction](#introduction)
+
+[Singly Linked List](#singly-linked-list)
 
 ## Introduction
 
@@ -19,6 +17,8 @@ There are many because some of them are very specialized, but some of them are p
 
 - Classes are blueprints that when created make objects known as instances. A blueprint for creating objects with pre-defined properties and methods
 ### ES2015 Class
+
+[SLIDES es2015 class syntax](https://cs.slides.com/colt_steele/es2015-class-syntax)
 
 - Classes are created with the new keyword
 
@@ -56,4 +56,30 @@ const p2 = new Point(10,10); // { x: 10, y: 10 }
 // it's oly a plain method that will work if you passing the correct data.
 Point.distance(p1, p2) // it will return the result with out call the this key word
 ```
+## Singly Linked List
 
+[SLIDES Singly Linked List](https://cs.slides.com/colt_steele/singly-linked-lists)
+
+### What is a linked list?
+
+A data structure that contains a head (beginning), tail (end) and length property.
+
+Linked Lists consist of nodes, and each node has a value and a pointer to another node or null.
+
+It is like a skycraper but with no elevator in it, only stairs. In an array we can say, put me in the fifth floor as an elevator do, but with linked list we can only go though the stairs.
+
+[Visual algo of singly linked list](https://visualgo.net/en/list?slide=1)
+
+### Comparisons with Arrays
+
+#### Lists
+
+- Do not have indexes!
+- Connected via nodes with a next pointer
+- Random access is not allowed
+
+#### Arrays
+
+- Indexed in order!
+- Insertion and deletion can be expensive
+- Can quickly be accessed at a specific index
