@@ -83,3 +83,14 @@ It is like a skycraper but with no elevator in it, only stairs. In an array we c
 - Indexed in order!
 - Insertion and deletion can be expensive
 - Can quickly be accessed at a specific index
+
+### Liked List Push Method
+
+In order to avoid the list.next.next.next ... hell, we gonna implement a push method with the next pseudocode.
+
+- This function should accept a value
+- Create a new node using the value passed to the function
+- If there is no head property on the list, set the head and tail to be the newly created node
+- Otherwise set the next property on the tail to be the new node and set the tail property on the list to be the newly created node
+- Increment the length by one
+- Return the linked list
