@@ -20,23 +20,32 @@ class SinglyLinkedList {
 		// Create a new node using the value passed to the function
 		const node = new Node(val)
 		// If there is no head property on the list, set the head and tail to be the newly created node
-		if(!this.tail && !this.head){
-			this.tail = node;
-			this.head = node;
-		} else{
+		if(!this.head){
+			this.head = node; // head and tail share the same node 
+			this.tail = this.head;
+		} else {
 			// Otherwise set the next property on the tail to be the new node and set the tail property on the list to be the newly created node
-			this.tail.next = this.tail;
+			// take the current tail, take the next property and set that equal to the new node
+			this.tail.next = node; // * here we add a new node to the next property of the current tail(it is a label of the node)
+			// and then we have to update the tail
 			this.tail = node;
 		}
 		// Increment the length by one
 		this.length++
 		// Return the linked list
-		return SinglyLinkedList;
+		return this;
 	}
 }
 
 let first = new SinglyLinkedList();
-first.push('how');
+first.push('what');
 first.push('are');
-first.push('you');
+first.push('fking');
+first.push('happen');
+first.push('here');
+console.log(first.head);
+console.log(first.head.next);
+console.log(first.head.next?.next);
+console.log(first.head.next?.next?.next);
+console.log(first.head.next?.next?.next?.next);
 console.log(first);

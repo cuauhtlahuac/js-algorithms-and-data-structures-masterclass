@@ -94,3 +94,26 @@ In order to avoid the list.next.next.next ... hell, we gonna implement a push me
 - Otherwise set the next property on the tail to be the new node and set the tail property on the list to be the newly created node
 - Increment the length by one
 - Return the linked list
+
+#### Explanation of the tail confusion
+
+I see how this bit is confusing. I'll try and illustrate how it works. Imagine this is our list:
+
+45 ---> 78 ---> 99
+             **TAIL**
+Suppose we want to insert 104.
+
+The key is that `this.tail` is just a pointer that will reference a node on the list. It's just a label. We have two steps to make this work...first we add our node to the end of the list, and second we update `this.tail` to point to the newly added node.
+
+When we call `this.tail.next = newNode` , we're adding the newNode to the end of the list. Our list would look like this now:
+
+45 ---> 78 ---> 99 ---> 104
+             **TAIL**
+We've added the newNode to the list, but the tail pointer is still incorrect. If we called `this.tail` on the list, we still get 99. So to update it, we run `this.tail = newNode`. This moves the "label" to the correct spot.
+
+45 ---> 78 ---> 99 ---> 104
+                      **TAIL**
+
+Could we say then that the linked list consists precisely in that? that every node in the list is (just) a property of the previous node?
+
+Exactly! To access an entire linked list, the only thing you need is the first node.  From there, the next node is just another property that we happened to call next in our example.  That node has its own next property, and so on.  When you work with a linked list, you really only "see" one node at any given time rather than "seeing" the entire list at once.
