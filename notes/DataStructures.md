@@ -88,6 +88,8 @@ It is like a skycraper but with no elevator in it, only stairs. In an array we c
 
 In order to avoid the list.next.next.next ... hell, we gonna implement a push method with the next pseudocode.
 
+#### Push Method Pseudocode
+
 - This function should accept a value
 - Create a new node using the value passed to the function
 - If there is no head property on the list, set the head and tail to be the newly created node
@@ -107,7 +109,8 @@ The key is that `this.tail` is just a pointer that will reference a node on the 
 
 When we call `this.tail.next = newNode` , we're adding the newNode to the end of the list. Our list would look like this now:
 
-45 ---> 78 ---> 99 ---> 104
+45 ---> 78 ---> 99 ---> 104 .
+
              **TAIL**
 We've added the newNode to the list, but the tail pointer is still incorrect. If we called `this.tail` on the list, we still get 99. So to update it, we run `this.tail = newNode`. This moves the "label" to the correct spot.
 
@@ -117,3 +120,14 @@ We've added the newNode to the list, but the tail pointer is still incorrect. If
 Could we say then that the linked list consists precisely in that? that every node in the list is (just) a property of the previous node?
 
 Exactly! To access an entire linked list, the only thing you need is the first node.  From there, the next node is just another property that we happened to call next in our example.  That node has its own next property, and so on.  When you work with a linked list, you really only "see" one node at any given time rather than "seeing" the entire list at once.
+
+### Liked List Pop Method
+
+#### Pop Method Pseudocode
+
+- If there are no nodes in the list, return undefined
+- Loop through the list until you reach the tail
+- Set the next property of the 2nd to last node to be null
+- Set the tail to be the 2nd to last node
+- Decrement the length of the list by 1
+- Return the value of the node removed
