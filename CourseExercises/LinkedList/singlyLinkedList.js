@@ -37,24 +37,41 @@ class SinglyLinkedList {
 	}
 	pop = () => {
 		// if empty do nothing
+		if(!this.head) return;
 		// Vertex pre = head
+		let pre = this.head;
 		// temp = head.next
+		let temp = this.head.next;
 		// while ( temp.next != null)
-			// pre = pre.next
-		// pre.next = null
-		// delete temp, tail = pre	
-	}
+			while (temp.next != null) {
+				// pre = pre.next
+				pre = pre.next;
+				temp = temp.next
+			}
+			// pre.next = null
+			pre.next = null;
+		// delete temp
+		temp = undefined;
+		this.tail = pre
+		this.length--
+		return pre.next;
+	}	
 }
 
 let first = new SinglyLinkedList();
+first.pop();
 first.push('what');
-first.push('are');
-first.push('fking');
-first.push('happen');
-first.push('here');
 console.log(first.head);
+first.push('are');
 console.log(first.head.next);
+first.push('fking');
 console.log(first.head.next?.next);
-console.log(first.head.next?.next?.next);
-console.log(first.head.next?.next?.next?.next);
+console.log('TAIL: ', first.tail);
+console.log('POP! -----');
+first.pop();
+console.log('tail: ', first.tail);
 console.log(first);
+first.push('happen');
+console.log(first.head.next?.next);
+first.push('here');
+console.log(first.head.next?.next?.next);
