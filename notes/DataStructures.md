@@ -89,7 +89,7 @@ It is like a skycraper but with no elevator in it, only stairs. In an array we c
 In order to avoid the list.next.next.next ... hell, we gonna implement a push method with the next pseudocode.
 
 #### Push Method Pseudocode
-
+ 
 - This function should accept a value
 - Create a new node using the value passed to the function
 - If there is no head property on the list, set the head and tail to be the newly created node
@@ -131,3 +131,16 @@ Exactly! To access an entire linked list, the only thing you need is the first n
 - Set the tail to be the 2nd to last node
 - Decrement the length of the list by 1
 - Return the value of the node removed
+
+### Liked List Shifting Method
+
+Removing a new node from the beginning of the Linked List!
+
+#### Shifting Method Pseudocode
+
+- If there are no nodes, return undefined
+- Store the current head property in a variable
+- Set the head property to be the current head's next property
+- Decrement the length by 1
+- Return the value of the node removed
+

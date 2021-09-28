@@ -58,21 +58,45 @@ class SinglyLinkedList {
 		this.length--;
 		return current;
 	}	
+
+	shift = () => {
+	/* Removing a new node from the beginning of the Linked List! */
+
+	// If there are no nodes, return undefined
+	if(!this.head) return;
+
+	// Store the current head property in a variable
+	const currentHead = this.head;
+	// Set the head property to be the current head's next property
+	this.head = currentHead?.next;	
+	// Decrement the length by 1
+	this.length--;
+	// If there is not more next
+	if(this.head === this.tail){
+		console.log('HIT THE END');
+		this.head = null;
+		this.tail = null;
+		this.length = 0;
+	}
+
+	// Return the value of the node removed
+	return currentHead;
+	}
 }
 
 let first = new SinglyLinkedList();
 first.push('Hi');
-console.log(first.tail);
 first.push('There');
-console.log(first.tail);
 first.push('!');
-console.log(first.tail);
-first.pop();
-console.log('Pop! goodby "!"');
-console.log(first.tail);
-first.pop();
-console.log('Pop! goodby "There"');
-console.log(first.tail);
-first.pop();
-console.log('Pop! goodby "Hi"');
+first.shift();
+console.log('Shift! goodby "Hi"');
+console.log(first.head,' - ', first.tail);
+first.shift();
+console.log('Shift! goodby "There"');
+console.log(first.head,' - ', first.tail);
+first.shift();
+console.log('Shift! goodby "!"');
 console.log(first);
+
+
+
