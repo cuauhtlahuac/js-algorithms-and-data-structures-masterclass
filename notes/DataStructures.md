@@ -144,3 +144,6 @@ Removing a new node from the beginning of the Linked List!
 - Decrement the length by 1
 - Return the value of the node removed
 
+### Unshifting
+
+Adding a new node to the beginning of the Linked List!

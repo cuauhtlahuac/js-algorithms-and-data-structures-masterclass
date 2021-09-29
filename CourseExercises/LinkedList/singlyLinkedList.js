@@ -79,22 +79,29 @@ class SinglyLinkedList {
 	// Return the value of the node removed
 	return currentHead;
 	}
+
+	unshift = (val) => {
+		if(!this.head) return;
+
+		const node = new Node(val);
+
+		const currentHead = this.head;
+
+		this.head = node;
+		this.head.next = currentHead;
+
+		return currentHead;
+
+	}
 }
 
 let first = new SinglyLinkedList();
 first.push('Hi');
 first.push('There');
 first.push('!');
-console.log(first.head,' - ', first.tail);
-first.shift();
-console.log('Shift! goodby "Hi"');
-console.log(first.head,' - ', first.tail);
-first.shift();
-console.log('Shift! goodby "There"');
-console.log(first.head,' - ', first.tail);
-first.shift();
-console.log('Shift! goodby "!"');
-console.log(first);
+first.unshift(72672)
+console.log(first)
+
 
 
 
