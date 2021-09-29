@@ -71,12 +71,9 @@ class SinglyLinkedList {
 	this.head = currentHead?.next;	
 	// Decrement the length by 1
 	this.length--;
-	// If there is not more next
+	// If head equals tail after the last shift
 	if(this.head === this.tail){
-		console.log('HIT THE END');
-		this.head = null;
 		this.tail = null;
-		this.length = 0;
 	}
 
 	// Return the value of the node removed
@@ -88,6 +85,7 @@ let first = new SinglyLinkedList();
 first.push('Hi');
 first.push('There');
 first.push('!');
+console.log(first.head,' - ', first.tail);
 first.shift();
 console.log('Shift! goodby "Hi"');
 console.log(first.head,' - ', first.tail);
