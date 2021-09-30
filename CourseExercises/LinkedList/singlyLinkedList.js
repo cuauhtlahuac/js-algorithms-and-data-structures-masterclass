@@ -20,7 +20,7 @@ class SinglyLinkedList {
 		// Create a new node using the value passed to the function
 		const node = new Node(val)
 		// If there is no head property on the list, set the head and tail to be the newly created node
-		if(!this.head){
+		if (!this.head) {
 			this.head = node; // head and tail share the same node 
 			this.tail = this.head;
 		} else {
@@ -37,9 +37,9 @@ class SinglyLinkedList {
 	}
 	pop = () => {
 		// if empty do nothing
-		if(!this.head) return;
+		if (!this.head) return;
 
-		if(this.head === this.tail){
+		if (this.head === this.tail) {
 			this.head = null;
 			this.tail = null;
 			this.length = 0;
@@ -57,41 +57,41 @@ class SinglyLinkedList {
 		this.tail.next = null;
 		this.length--;
 		return current;
-	}	
-
-	shift = () => {
-	/* Removing a new node from the beginning of the Linked List! */
-
-	// If there are no nodes, return undefined
-	if(!this.head) return;
-
-	// Store the current head property in a variable
-	const currentHead = this.head;
-	// Set the head property to be the current head's next property
-	this.head = currentHead?.next;	
-	// Decrement the length by 1
-	this.length--;
-	// If head equals tail after the last shift
-	if(this.head === this.tail){
-		this.tail = null;
 	}
 
-	// Return the value of the node removed
-	return currentHead;
+	shift = () => {
+		/* Removing a new node from the beginning of the Linked List! */
+
+		// If there are no nodes, return undefined
+		if (!this.head) return;
+
+		// Store the current head property in a variable
+		const currentHead = this.head;
+		// Set the head property to be the current head's next property
+		this.head = currentHead?.next;
+		// Decrement the length by 1
+		this.length--;
+		// If head equals tail after the last shift
+		if (this.head === this.tail) {
+			this.tail = null;
+		}
+
+		// Return the value of the node removed
+		return currentHead;
 	}
 
 	unshift = (val) => {
-		if(!this.head) return;
-
 		const node = new Node(val);
 
-		const currentHead = this.head;
-
-		this.head = node;
-		this.head.next = currentHead;
-
-		return currentHead;
-
+		if (!this.head) {
+			this.head = node;
+			this.tail = node;
+		} else {
+			node.next = this.head;
+			this.head = node;
+		}
+		this.length++;
+		return this;
 	}
 }
 
