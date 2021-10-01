@@ -163,3 +163,7 @@ Adding a new node to the beginning of the Linked List!
 Retrieving a node by it's position in the Linked List!
 
 #### Get Method Pseudocode
+
+- This function should accept an index
+- If the index is less than zero or greater than or equal to the length of the list, return null
+- Loop through the list until you reach the index and return the node at that specific index

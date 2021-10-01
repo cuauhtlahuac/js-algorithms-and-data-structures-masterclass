@@ -95,12 +95,16 @@ class SinglyLinkedList {
 	}
 
 	get = (position) => {
-		let currentNode = this.head;
-		if(position === 0){
-			return currentNode;
-		}
-		let index = 0
+	// 	This function should accept an index
+	// If the index is less than zero or greater than or equal to the length of the list, return null
+	if(position < 0 || position >= this.length) {
+		return null;
+	}
 
+	let currentNode = this.head;
+
+	// Loop through the list until you reach the index and return the node at that specific index
+	let index = 0
 		while (index < position) {
 			currentNode = currentNode.next;
 			index++;
@@ -114,7 +118,7 @@ let first = new SinglyLinkedList();
 first.push('Hi');
 first.push('There');
 first.push('!');
-const ndo = first.get(2)
+const ndo = first.get(1)
 console.log(ndo)
 
 
