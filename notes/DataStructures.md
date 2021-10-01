@@ -157,3 +157,9 @@ Adding a new node to the beginning of the Linked List!
 - Set the head property on the list to be that newly created node
 - Increment the length of the list by 1
 - Return the linked list
+
+### GET
+
+Retrieving a node by it's position in the Linked List!
+
+#### Get Method Pseudocode

@@ -93,14 +93,29 @@ class SinglyLinkedList {
 		this.length++;
 		return this;
 	}
+
+	get = (position) => {
+		let currentNode = this.head;
+		if(position === 0){
+			return currentNode;
+		}
+		let index = 0
+
+		while (index < position) {
+			currentNode = currentNode.next;
+			index++;
+		}
+
+		return currentNode;
+	}
 }
 
 let first = new SinglyLinkedList();
 first.push('Hi');
 first.push('There');
 first.push('!');
-first.unshift(72672)
-console.log(first)
+const ndo = first.get(2)
+console.log(ndo)
 
 
 
