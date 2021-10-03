@@ -112,6 +112,11 @@ class SinglyLinkedList {
 
 		return currentNode;
 	}
+
+	set = () => {
+
+		return;
+	}
 }
 
 let first = new SinglyLinkedList();

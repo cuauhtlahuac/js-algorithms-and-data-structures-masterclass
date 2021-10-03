@@ -167,3 +167,14 @@ Retrieving a node by it's position in the Linked List!
 - This function should accept an index
 - If the index is less than zero or greater than or equal to the length of the list, return null
 - Loop through the list until you reach the index and return the node at that specific index
+
+### SET
+
+Changing the value of a node based on it's position in the Linked List
+
+#### Set Pseudocode
+
+- This function should accept a value and an index
+- Use your get function to find the specific node.
+- If the node is not found, return false
+- If the node is found, set the value of that node to be the value passed to the function and return true
