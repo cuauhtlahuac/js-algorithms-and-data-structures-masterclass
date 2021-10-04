@@ -113,9 +113,30 @@ class SinglyLinkedList {
 		return currentNode;
 	}
 
-	set = () => {
+	set = (value, position) => {
+		/* Changing the value of a node based on it's position in the Linked List */
+		if(position < 0 || position >= this.length) {
+			return null;
+		}
+	
+		let currentNode = this.head;
+	
+		let index = 0;
 
-		return;
+		do {
+			console.log('DO');
+			console.log({index, position});
+			currentNode = currentNode.next;
+			index++;
+		} while (index <= position) {
+				console.log('WHILE');
+				if(index === position - 1){
+					currentNode.next = new Node(value);
+					console.log({currentNode});
+				}
+			} 
+
+		return this;
 	}
 }
 
@@ -123,7 +144,7 @@ let first = new SinglyLinkedList();
 first.push('Hi');
 first.push('There');
 first.push('!');
-const ndo = first.get(1)
+const ndo = first.set('new Value', 2)
 console.log(ndo)
 
 
