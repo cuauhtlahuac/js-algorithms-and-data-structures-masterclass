@@ -113,29 +113,25 @@ class SinglyLinkedList {
 		return currentNode;
 	}
 
+	/* Changing the value of a node based on it's position in the Linked List */
 	set = (value, position) => {
-		/* Changing the value of a node based on it's position in the Linked List */
-		if(position < 0 || position >= this.length) {
-			return null;
+	// This function should accept a value and an index
+	// Use your get function to find the specific node.
+		const foundNode = this.get(position);
+		// If the node is found, set the value of that node to be the value passed to the function and return true
+		if(foundNode){
+			foundNode.val = value;
+			return true;
 		}
-	
-		let currentNode = this.head;
-
-		for (let index = 0; index <= position; index++) {
-			if(index === position){
-				currentNode.val = value;
-				break;
-			}
-			currentNode = currentNode.next;
-		}
-
-		return this;
-	}
+		// If the node is not found, return false
+		return false;
+}
 }
 
 let first = new SinglyLinkedList();
 first.push('Hi');
 first.push('There');
 first.push('!');
-const ndo = first.set('new Value', 1)
-console.log(ndo)
+console.log({beforeChange: first.get(1)})
+first.set('new Value', 1)
+console.log({afterChanged: first.get(1)})
