@@ -125,13 +125,47 @@ class SinglyLinkedList {
 		}
 		// If the node is not found, return false
 		return false;
-}
+	}
+
+
+	insert = (value, position) => {
+		// Adding a node to the Linked List at a specific position
+		if (position <= 0) {
+			return null;
+		}
+
+		if ( position >= this.length ) {
+			console.log('Reach tail');
+			return this.tail;
+		}
+
+		const newNode = new Node(value);
+		let currentNode = this.head;
+
+		let index = 1;
+
+		while (index !== position) {
+			currentNode = this.head.next;
+			index++;
+		}
+
+		const tempNext = currentNode.next;
+
+		newNode.next = tempNext;
+		currentNode.next = newNode;
+		this.length++;
+		return this;
+	}
 }
 
 let first = new SinglyLinkedList();
-first.push('Hi');
-first.push('There');
-first.push('!');
-console.log({beforeChange: first.get(1)})
-first.set('new Value', 1)
-console.log({afterChanged: first.get(1)})
+first.push('Head'); // 0
+first.push('Next'); // 1
+first.push('Tail'); // 2
+first.insert('First insert', 2) // here use unshift instead
+console.log({afterChanged: first.get(2)})
+first.insert('Second insert', 3) // works well
+console.log({afterChanged: first.get(3)})
+first.insert('third insert', 4) // here use push instead
+console.log({afterChanged: first.get(4)})
+console.log({first})
