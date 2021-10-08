@@ -130,31 +130,29 @@ class SinglyLinkedList {
 
 	insert = (value, position) => {
 		// Adding a node to the Linked List at a specific position
-		if (position <= 0) {
-			return null;
-		}
 
-		if ( position >= this.length ) {
-			console.log('Reach tail');
-			return this.tail;
-		}
-
-		const newNode = new Node(value);
 		let currentNode = this.head;
 
-		let index = 1;
-
-		while (index !== position) {
-			currentNode = this.head.next;
-			index++;
+		for (let i = 0; i < position - 1; i++) {
+			currentNode = currentNode.next;
 		}
-
+		
 		const tempNext = currentNode.next;
-
+		const newNode = new Node(value);
+		
 		newNode.next = tempNext;
 		currentNode.next = newNode;
 		this.length++;
 		return this;
+	}
+
+	printEachNode(){
+		let current = this.head;
+
+		for (let i = 0; i < this.length; i++) {
+			console.log({[i]: current});
+			current = current.next
+		}
 	}
 }
 
@@ -162,10 +160,11 @@ let first = new SinglyLinkedList();
 first.push('Head'); // 0
 first.push('Next'); // 1
 first.push('Tail'); // 2
-first.insert('First insert', 2) // here use unshift instead
-console.log({afterChanged: first.get(2)})
-first.insert('Second insert', 3) // works well
+first.insert('First insert', 3) // here use unshift instead
 console.log({afterChanged: first.get(3)})
-first.insert('third insert', 4) // here use push instead
-console.log({afterChanged: first.get(4)})
+first.insert('Second insert', 2) // works well
+console.log({afterChanged: first.get(2)})
+first.insert('third insert', 3) // here use push instead
+console.log({afterChanged: first.get(3)})
 console.log({first})
+first.printEachNode();
