@@ -131,25 +131,17 @@ class SinglyLinkedList {
 	insert = (value, position) => {
 		// Adding a node to the Linked List at a specific position
 
-		if(position < 0  || position > this.length) return false;
+		if (position < 0 || position > this.length) return false;
 
-		if(position === 0) {
-			this.unshift(value);
-			return true;
-		}
+		if (position === 0) return !!this.unshift(value); // double bangs! to get boolean value
 
-		if (position === this.length) {
-			this.push(value);
-			return true;
-		}
-
-		let gotNode = this.get(position - 1);
+		if (position === this.length) return !!this.push(value);			
 		
 		const newNode = new Node(value);
-		const tempNext = gotNode.next; // first save all the values of the next of the node that we got 
-
-		newNode.next = tempNext; // paste in after the new node
-		gotNode.next = newNode; // then we put al the values accumulated next to the got node
+		let prev = this.get(position - 1); // we want to insert just before the index given because it will substitute its position;
+		let temp = prev.next; // here we save the node to avoid the lost of 'next' data
+		prev.next = newNode; // then here we paste the value of new node into the previous node
+		newNode.next = temp; // Finally here we paste the values saved for the all the next values 
 
 		this.length++;
 		return true;
