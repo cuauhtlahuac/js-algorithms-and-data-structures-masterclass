@@ -147,6 +147,16 @@ class SinglyLinkedList {
 		return true;
 	}
 
+	delete(position){
+		if (position < 0 || position > this.length) return false;
+
+		const prev = this.get(position - 1);
+		const next = this.get(position + 1);
+		prev.next = next;
+
+		return prev;
+	}
+
 	printEachNode(){
 		let current = this.head;
 
@@ -160,12 +170,8 @@ class SinglyLinkedList {
 let first = new SinglyLinkedList();
 first.push('Head'); // 0
 first.push('Next'); // 1
+first.push('Next2'); // 1
 first.push('Tail'); // 2
-first.insert('First insert', 3) // here use unshift instead
-console.log({afterChanged: first.get(3)})
-first.insert('Second insert', 2) // works well
-console.log({afterChanged: first.get(2)})
-first.insert('third insert', 3) // here use push instead
-console.log({afterChanged: first.get(3)})
+first.delete(1) // delete next
 console.log({first})
 first.printEachNode();

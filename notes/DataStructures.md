@@ -194,3 +194,8 @@ Set the next property on that node to be the new node
 Set the next property on the new node to be the previous next
 Increment the length
 Return true
+
+### Remove
+
+Removing a node from the Linked List at a specific position.
+
