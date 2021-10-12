@@ -148,12 +148,21 @@ class SinglyLinkedList {
 	}
 
 	delete(position){
-		if (position < 0 || position > this.length) return false;
 
+		// If the index is less than zero or greater than the length, return undefined
+		if (position < 0 || position > this.length) return;
+		// If the index is the same as the length-1, pop
+		if (position === this.length - 1) return !!this.pop(position);
+		// If the index is 0, shift
+		if (position === 0) return !!this.shift(position);
+
+		// Otherwise, using the get method, access the node at the index - 1
 		const prev = this.get(position - 1);
-		const next = this.get(position + 1);
-		prev.next = next;
-
+		// Set the next property on that node to be the next of the next node
+		prev.next = prev.next.next;
+		// Decrement the length
+		this.length--;
+		// Return the value of the node removed
 		return prev;
 	}
 
