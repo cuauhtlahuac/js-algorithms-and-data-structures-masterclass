@@ -158,12 +158,13 @@ class SinglyLinkedList {
 
 		// Otherwise, using the get method, access the node at the index - 1
 		const prev = this.get(position - 1);
+		const removed = prev.next;
 		// Set the next property on that node to be the next of the next node
-		prev.next = prev.next.next;
+		prev.next = removed.next;
 		// Decrement the length
 		this.length--;
 		// Return the value of the node removed
-		return prev;
+		return removed;
 	}
 
 	printEachNode(){
@@ -179,8 +180,8 @@ class SinglyLinkedList {
 let first = new SinglyLinkedList();
 first.push('Head'); // 0
 first.push('Next'); // 1
-first.push('Next2'); // 1
-first.push('Tail'); // 2
+first.push('Next2'); // 2
+first.push('Tail'); // 3
 first.delete(1) // delete next
 console.log({first})
 first.printEachNode();
