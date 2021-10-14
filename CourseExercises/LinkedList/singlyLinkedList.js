@@ -148,7 +148,6 @@ class SinglyLinkedList {
 	}
 
 	delete(position){
-
 		// If the index is less than zero or greater than the length, return undefined
 		if (position < 0 || position > this.length) return;
 		// If the index is the same as the length-1, pop
@@ -167,12 +166,29 @@ class SinglyLinkedList {
 		return removed;
 	}
 
+	reverse(){
+		// Reversing the linked list in place
+
+		// tail.next equal to null then you have to paste after this the next node of the head, at the final he point the head!
+		let tempHead = this.head;
+		let tempTail = this.tail;
+		this.tail = this.head;
+		this.head = tempTail;
+		this.tail.next = null;
+		
+		for (let i = 0; i < this.length; i++) {
+			// here goes the logic
+		}
+
+		return;
+	}
+
 	printEachNode(){
 		let current = this.head;
 
 		for (let i = 0; i < this.length; i++) {
 			console.log({[i]: current});
-			current = current.next
+			current = current?.next
 		}
 	}
 }
@@ -182,6 +198,6 @@ first.push('Head'); // 0
 first.push('Next'); // 1
 first.push('Next2'); // 2
 first.push('Tail'); // 3
-first.delete(1) // delete next
+first.reverse(1) // delete next
 console.log({first})
 first.printEachNode();
