@@ -168,19 +168,34 @@ class SinglyLinkedList {
 
 	reverse(){
 		// Reversing the linked list in place
-
 		// tail.next equal to null then you have to paste after this the next node of the head, at the final he point the head!
-		let tempHead = this.head;
-		let tempTail = this.tail;
-		this.tail = this.head;
-		this.head = tempTail;
-		this.tail.next = null;
-		
-		for (let i = 0; i < this.length; i++) {
-			// here goes the logic
-		}
 
-		return;
+		// Swap the head and tail
+				let tempHead = this.head;	
+				let tempTail = this.tail;
+				
+				this.head = tempTail;
+				this.tail = tempHead;
+		// Create a variable called next
+				let next;
+		// Create a variable called prev
+				let prev = null;
+		// Create a variable called node and initialize it to the head property
+				let node = tempHead;
+
+		// Loop through the list
+		for (let i = 0; i < this.length; i++) {
+				// Set next to be the next property on whatever node is
+				next = node.next;
+				// Set the next property on the node to be whatever prev is
+				node.next = prev;
+				// Set prev to be the value of the node variable
+				prev = node;
+				// Set the node variable to be the value of the next variable
+				node = next;	
+		}
+		// Once you have finished looping, return the list
+		return node;
 	}
 
 	printEachNode(){
