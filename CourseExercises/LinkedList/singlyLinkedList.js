@@ -198,14 +198,15 @@ class SinglyLinkedList {
 		return node;
 	}
 
-	printEachNode(){
-		let current = this.head;
+	print(){
+		let arr = [];
 
-		for (let i = 0; i < this.length; i++) {
-			console.log({[i]: current});
-			current = current?.next
+		let current = this.head;
+		while(current){
+			arr.push(current.val)
+			current = current.next;
 		}
-	}
+		console.log(arr);
 }
 
 let first = new SinglyLinkedList();
