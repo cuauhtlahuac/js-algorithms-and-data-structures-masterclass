@@ -171,31 +171,28 @@ class SinglyLinkedList {
 		// tail.next equal to null then you have to paste after this the next node of the head, at the final he point the head!
 
 		// Swap the head and tail
-				let tempHead = this.head;	
-				let tempTail = this.tail;
+				let node = this.head;	
 				
-				this.head = tempTail;
-				this.tail = tempHead;
+				this.head = this.tail;
+				this.tail = node;
 		// Create a variable called next
 				let next;
 		// Create a variable called prev
 				let prev = null;
-		// Create a variable called node and initialize it to the head property
-				let node = tempHead;
 
 		// Loop through the list
 		for (let i = 0; i < this.length; i++) {
-				// Set next to be the next property on whatever node is
+				// node.next is the value of the current tail, it was the head before
 				next = node.next;
-				// Set the next property on the node to be whatever prev is
+				// then we substitute the tail.next with the value of prev
 				node.next = prev;
-				// Set prev to be the value of the node variable
+				// prev node is wherever the node used to be
 				prev = node;
-				// Set the node variable to be the value of the next variable
+				// here move one thing over
 				node = next;	
 		}
 		// Once you have finished looping, return the list
-		return node;
+		return this;
 	}
 
 	print(){
@@ -207,6 +204,7 @@ class SinglyLinkedList {
 			current = current.next;
 		}
 		console.log(arr);
+	}
 }
 
 let first = new SinglyLinkedList();
@@ -216,4 +214,4 @@ first.push('Next2'); // 2
 first.push('Tail'); // 3
 first.reverse(1) // delete next
 console.log({first})
-first.printEachNode();
+first.print();
