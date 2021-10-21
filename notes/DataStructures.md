@@ -224,3 +224,23 @@ Reversing the Linked List
 - Set prev to be the value of the node variable
 - Set the node variable to be the value of the next variable
 - Once you have finished looping, return the list
+
+#### Explanation
+
+```js
+// [100, 201, 250, 350, 999]
+   node  next
+next = 201 // next = node.next 
+node.next = null   // node.next = prev;
+prev = 100 -> null // node 
+node = 201
+
+// [100, 201, 250, 350, 999]
+    prev node next
+next = 250 // next = node.next
+node.next = 100 // node.next = prev;
+prev = 201 -> 100 -> null // node 
+node = 250
+
+// and so on...
+```
