@@ -244,3 +244,16 @@ node = 250
 
 // and so on...
 ```
+
+### BIG O of Single Linked Lists
+
+Insertion - O(1)
+Removal - It depends --- O(1) or O(N) ...nearly to end of the list
+Searching - O(N) --- Because you have to search any single ndoe
+Access - O(N) --- Same case as Searching
+
+### RECAP
+
+- Singly Linked Lists are an excellent alternative to arrays when insertion and deletion at the beginning are frequently required
+- Arrays contain a built in index whereas Linked Lists do not
+- The idea of a list data structure that consists of nodes is the foundation for other data structures like Stacks and Queues
