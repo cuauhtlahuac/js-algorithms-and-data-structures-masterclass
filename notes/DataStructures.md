@@ -257,3 +257,27 @@ Access - O(N) --- Same case as Searching
 - Singly Linked Lists are an excellent alternative to arrays when insertion and deletion at the beginning are frequently required
 - Arrays contain a built in index whereas Linked Lists do not
 - The idea of a list data structure that consists of nodes is the foundation for other data structures like Stacks and Queues
+
+
+## Double Linked List
+
+Almost identical to Single Linked List. But we have tow pointers next and previous.
+
+More flexibility === More memory
+
+### Basic structure is:
+
+NODE
+- val
+- next
+- prev
+  
+Doubly Linked List
+- head
+- tail
+- length
+
+
+
+
+
