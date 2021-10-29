@@ -25,7 +25,7 @@ All files generated from the Udemy Course JS Algorithms and Data Structures.
 17. [Radix Sort](./notes/Sorting.md#radix-sort).
 18. [Data Structures Introduction](./notes/DataStructures.md#introduction).
 19. [Singly Linked List](./notes/DataStructures.md#singly-linked-list).
-20. Doubly Linked List.
+20. [Doubly Linked List](/notes/DataStructures.md#double-linked-list).
 21. Stacks - Queues.
 22. Binary Search Trees.
 23. Tree Traversal.

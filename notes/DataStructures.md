@@ -4,6 +4,8 @@
 
 [Singly Linked List](#singly-linked-list)
 
+[Double Linked List](#double-linked-list)
+
 ## Introduction
 
 ### WHAT DO THEY DO?
